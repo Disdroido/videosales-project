@@ -15,6 +15,10 @@ Flight::route('/', function(){
 	include "pages/dashboard.php";
 });
 
+Flight::route('/your-listings', function(){
+	include "pages/your-listings.php";
+});
+
 Flight::route('/logout', function(){
 
 });
