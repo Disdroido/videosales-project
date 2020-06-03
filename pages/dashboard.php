@@ -11,4 +11,4 @@ $twig = new \Twig\Environment($loader, [
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
 
-echo $twig->render('dashboard.html', ['name' => 'Ethan Worth']);
+echo $twig->render('dashboard.html', ['name' => 'Ethan Worth', 'page' => 'dashboard']);

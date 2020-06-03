@@ -1,9 +1,118 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Dashboard</title>
-</head>
-<body>
-<h1>Hello my name is {% if name == "Ethan Worth" %} {{name}} {% endif %}</h1>
+<html lang="en">
+
+{{ include('partials/header.html') }}
+
+<body class="sidebar-pinned ">
+
+  {{ include('partials/sidebar.html') }}
+
+  <main class="admin-main">
+    <!--site header begins-->
+
+    {{ include('partials/nav.html') }}
+    <!--site header ends -->
+    <section class="admin-content">
+
+      <div class="bg-darker">
+          <div class="container  m-b-30">
+              <div class="row p-b-40">
+                  <div class="col-12 p-t-40 p-b-40">
+
+                      <h1>Dashboard</h1>
+                      <p>Welcome {{name}}</p>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="container pull-up">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4">
+
+              <div class="card m-b-30">
+                  <div class="card-header">
+                      <h5 class="card-title m-b-0">TEST</h5>
+                  </div>
+                  <div class="card-body">
+                      <p class="card-text">Test</p>
+                  </div>
+                  <div class="card-footer">
+                      <a href="#!" class="btn btn-success">Button</a>
+                  </div>
+              </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+              <div class="card m-b-30">
+                  <div class="card-header">
+                      <h5 class="card-title m-b-0">TEST</h5>
+                  </div>
+                  <div class="card-body">
+                      <p class="card-text">Test</p>
+                  </div>
+                  <div class="card-footer">
+                      <a href="#!" class="btn btn-success">Button</a>
+                  </div>
+              </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+              <div class="card m-b-30">
+                  <div class="card-header">
+                      <h5 class="card-title m-b-0">TEST</h5>
+                  </div>
+                  <div class="card-body">
+                      <p class="card-text">Test</p>
+                  </div>
+                  <div class="card-footer">
+                      <a href="#!" class="btn btn-success">Button</a>
+                  </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+  <script src="assets/vendor/blockui/jquery.blockUI.js"></script>
+  <script src="assets/vendor/sweetalert/sweetalert2.all.min.js"></script>
+
+  <script src="assets/vendor/popper/popper.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/vendor/select2/js/select2.full.min.js"></script>
+  <script src="assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="assets/vendor/listjs/listjs.min.js"></script>
+  <script src="assets/vendor/moment/moment.min.js"></script>
+  <script src="assets/vendor/daterangepicker/daterangepicker.js"></script>
+  <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script src="assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+  <script src="assets/js/atmos.min.js"></script>
+  <script src="assets/js/template7.js"></script>
+  <!--page specific scripts for demo-->
+
+  <!--Additional Page includes-->
+  <script src="assets/vendor/apexchart/apexcharts.min.js"></script>
+  <!--chart data for current dashboard-->
+  <script src="assets/js/dashboard-01.js"></script>
+
+  <script src="assets/vendor/DataTables/datatables.min.js"></script>
+
 </body>
+
 </html>
