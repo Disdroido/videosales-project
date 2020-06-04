@@ -18,16 +18,10 @@
         <!--submenu-->
         <ul class="sub-menu ">
           <li class="menu-item "> <a href="" class=" menu-link"> <span class="menu-label"> <span class="menu-name">Your Listings </span> </span> <span class="menu-icon"> <i class="icon-placeholder mdi mdi-book-multiple "></i> </span> </a> </li>
-          <li class="menu-item "> <a href="" class=" menu-link"> <span class="menu-label"> <span class="menu-name">Add Listing </span> </span> <span class="menu-icon"> <i class="icon-placeholder mdi mdi-book-plus "></i> </span> </a> </li>
+          <li class="menu-item "> <a href="pages/add-listing.php" class=" menu-link"> <span class="menu-label"> <span class="menu-name">Add Listing </span> </span> <span class="menu-icon"> <i class="icon-placeholder mdi mdi-book-plus "></i> </span> </a> </li>
         </ul>
       </li>
-      <li class="menu-item "> <a href="" class="open-dropdown menu-link"> <span class="menu-label"> <span class="menu-name">Settingas <span class="menu-arrow"></span> </span> </span> <span class="menu-icon"> <i class="icon-placeholder mdi mdi-settings "></i> </span> </a>
-        <!--submenu-->
-        <ul class="sub-menu ">
-          <li class="menu-item "> <a href="" class=" menu-link"> <span class="menu-label"> <span class="menu-name">Change Password </span> </span> <span class="menu-icon"> <i class="icon-placeholder mdi mdi-account-edit "></i> </span> </a> </li>
-          <li class="menu-item "> <a href="" class=" menu-link"> <span class="menu-label"> <span class="menu-name">Change Email </span> </span> <span class="menu-icon"> <i class="icon-placeholder mdi mdi-email "></i> </span> </a> </li>
-        </ul>
-      </li>
+      <li class="menu-item {% if page == 'settings' %}active{% endif %}"> <a href="pages/settings.php" class=" menu-link"> <span class="menu-label"> <span class="menu-name">Settings </span> </span> <span class="menu-icon"> <i class="mdi mdi-settings"></i> </span> </a> </li>
     </ul>
   </div>
 
