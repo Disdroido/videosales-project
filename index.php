@@ -15,7 +15,7 @@ Flight::route('/', function(){
 	include "pages/dashboard.php";
 });
 
-Flight::route('/add-listings', function(){
+Flight::route('/add-listing', function(){
 	include "pages/add-listing.php";
 });
 
