@@ -18,14 +18,17 @@ Flight::route('/', function(){
 	include "pages/dashboard.php";
 });
 
-Flight::route('/add-listing', function(){
-	include "pages/add-listing.php";
-});
-
 Flight::route('/my-listings', function(){
 	include "pages/your-listings.php";
 });
 
+Flight::route('/add-listing', function(){
+	include "pages/add-listing.php";
+});
+
+Flight::route('/edit-listing', function(){
+	include "pages/edit-listing.php";
+});
 
 Flight::route('/settings', function(){
 	include "pages/settings.php";

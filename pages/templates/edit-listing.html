@@ -20,7 +20,7 @@
               <div class="row p-b-40">
                   <div class="col-12 p-t-40 p-b-40">
 
-                      <h1>Add a New Listing</h1>
+                      <h1>Edit Listing</h1>
 
                   </div>
               </div>
@@ -31,50 +31,62 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
+              {% for listing in myListings %}
               <div class="card m-b-30">
                 <div class="card-body">
-                  <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroupFileAddon01">Max 5Mb</span>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroupFileAddon01">Max 5Mb</span>
+                        </div>
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="inputGroupFile01">
+                          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                      </div>
                     </div>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="inputGroupFile01">
-                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+
+                    <div class="col-md-6">
+                      <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="1280" height="720" src="{{ listing.videoUrl }}" allow="encrypted-media" allowfullscreen></iframe>
+                      </div>
                     </div>
                   </div>
 
-                  <div class="form-row">
+                  <div class="form-row mt-3">
                     <div class="form-group col-md-6">
                       <label for="Title">Title</label>
-                      <input type="text" name="title" class="form-control">
+                      <input type="text" name="title" class="form-control" value="{{ listing.title }}">
                     </div>
 
                     <div class="form-group col-md-6">
                       <label for="Title">Price ($)</label>
-                      <input type="text" name="price" class="form-control">
+                      <input type="text" name="price" class="form-control" value="{{ listing.price }}">
                     </div>
                   </div>
 
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="Title">Suburb</label>
-                      <input type="text" name="suburb" class="form-control">
+                      <input type="text" name="suburb" class="form-control" value="{{ listing.suburb }}">
                     </div>
 
                     <div class="form-group col-md-6">
                       <label for="Title">State</label>
-                      <input type="text" name="state" class="form-control">
+                      <input type="text" name="state" class="form-control" value="{{ listing.state }}">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="description">Description</label>
                     <div id="editor" class="editor">
-                      <p></p>
+                      <p>{{ listing.description }}</p>
                     </div>
                   </div>
                 </div>
               </div>
+              {% endfor %}
             </div>
           </div>
         </div>

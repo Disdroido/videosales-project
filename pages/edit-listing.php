@@ -13,4 +13,4 @@ $twig = new \Twig\Environment($loader, [
 
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
-echo $twig->render('add-listing.html', ['myListings' => $listings->getAllListings(), 'page' => 'addListing']);
+echo $twig->render('edit-listing.html', ['myListings' => $listings->getAllListings(), 'page' => 'editListing']);
