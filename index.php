@@ -5,10 +5,13 @@ date_default_timezone_set('Australia/Sydney');
 require_once 'vendor/autoload.php';
 require_once 'classes/database.php';
 
-Flight::set('flight.handle_errors', false);
-
 $referring_url = $_SERVER['HTTP_HOST']; //if localhost use different db conn
+$database = new Database();
+$db = $database->getConnection("live", $referring_url);
 
+Flight::set('db', $db);
+
+Flight::set('flight.handle_errors', false);
 
 // check if logged in and redirect to /dashboard or /login
 Flight::route('/', function(){
@@ -18,6 +21,11 @@ Flight::route('/', function(){
 Flight::route('/add-listings', function(){
 	include "pages/add-listing.php";
 });
+
+Flight::route('/my-listings', function(){
+	include "pages/your-listings.php";
+});
+
 
 Flight::route('/settings', function(){
 	include "pages/settings.php";
