@@ -32,3 +32,16 @@
 .btn-danger:hover {
   background-color: #C6453C !important;
 }
+
+.progress_bar {
+  background-color: #00BF99;
+}
+
+/* .cloudinary_fileupload {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  margin: 0;
+  opacity: 0;
+} */
