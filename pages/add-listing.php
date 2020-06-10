@@ -14,6 +14,9 @@ $twig = new \Twig\Environment($loader, [
 
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
-$cloudinaryUploudInputField = cl_upload_tag('image_id', array("callback" => $cors_location));
+$cloudinaryUploudInputField = cl_upload_tag('video_id', array("resource_type" => "video",
+  "eager" => array(array("streaming_profile" => "full_hd", "format" => "m3u8")),
+  "eager_async" => true,
+  "html" => array("id" => "my_upload_tag")));
 
 echo $twig->render('add-listing.html', ['myListings' => $listings->getAllListings(), 'cloudinaryUpload' => $cloudinaryUploudInputField, 'page' => 'addListing']);

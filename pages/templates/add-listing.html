@@ -32,62 +32,68 @@
           <div class="row">
             <div class="col-12">
               <div class="card m-b-30">
+                <div class="progress">
+                  <div class="progress-bar" id="progress_bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                  </div>
+                </div>
                 <div class="card-body">
                   <div class="input-group mb-2">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroupFileAddon01">Max 100MB</span>
+                      <span class="input-group-text" id="inputGroupFileAddon01">Max 100Mb</span>
                     </div>
-                    <!-- <div class="custom-file"> -->
-                      {{ cloudinaryUpload|raw }}
+
+                    <div class="custom-file">
+                      <button id="upload_widget" class="custom-file-input" id="inputGroupFile01">Upload files</button>
                       <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                      {{ cloudinaryUpload|raw }}
                     </div>
                   </div>
 
+                  <div class="preview"></div>
 
+                  <form class="" action="#" method="post">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" class="form-control">
+                      </div>
 
-                  <div class="progress">
-                    <div class="progress-bar" id="progress_bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-                    </div>
-                  </div>
-
-                  <div class="preview embed-responsive embed-responsive-21by9"></div>
-
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="Title">Title</label>
-                      <input type="text" name="title" class="form-control">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                      <label for="Title">Price ($)</label>
-                      <input type="text" name="price" class="form-control">
-                    </div>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="Title">Suburb</label>
-                      <input type="text" name="suburb" class="form-control">
+                      <div class="form-group col-md-6">
+                        <label for="price">Price ($)</label>
+                        <input type="text" name="price" class="form-control">
+                      </div>
                     </div>
 
-                    <div class="form-group col-md-6">
-                      <label for="Title">State</label>
-                      <input type="text" name="state" class="form-control">
-                    </div>
-                  </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="suburb">Suburb</label>
+                        <input type="text" name="suburb" class="form-control">
+                      </div>
 
-                  <div class="form-group">
-                    <label for="description">Description</label>
-                    <div id="editor" class="editor" style="height: 200px;">
-                      <p></p>
+                      <div class="form-group col-md-6">
+                        <label for="state">State</label>
+                        <input type="text" name="state" class="form-control">
+                      </div>
                     </div>
-                  </div>
+
+                    <div class="form-group">
+                      <label for="description">Description</label>
+                      <div id="editor" class="editor" style="height: 200px;">
+                        <p></p>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <button type="button" name="button" class="btn btn-success" style="width: 100%;">Save</button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
     </section>
 
   </main>
@@ -119,6 +125,7 @@
     theme: 'snow'
   });
   </script>
+
   <!-- Cloudinary upload js -->
   <script type="text/javascript" src="assets/js/jquery.ui.widget.js"></script>
   <script type="text/javascript" src="assets/js/jquery.iframe-transport.js"></script>
@@ -147,7 +154,7 @@
     $('.preview');
     $('.image_public_id').val(data.result.public_id);
     url = (data.result.secure_url);
-    $('.preview').append('<iframe class="embed-responsive-item" src="'+url+'" allow="encrypted-media" allowfullscreen></iframe>');
+    $('.preview').append('<div class="embed-responsive embed-responsive-21by9"><iframe class="embed-responsive-item" src="'+url+'" allow="encrypted-media" allowfullscreen></iframe></div>');
     return true;
   });
   </script>

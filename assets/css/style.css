@@ -12,7 +12,7 @@
 }
 
 .btn-success:hover {
-  background-color: #06EABC !important;
+  background-color: #00A281 !important;
 }
 
 .btn-warning {
@@ -33,15 +33,48 @@
   background-color: #C6453C !important;
 }
 
-.progress_bar {
-  background-color: #00BF99;
+.progress {
+  background-color: #fff !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 
-/* .cloudinary_fileupload {
+.progress-bar {
+  background-color: #00BF99 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.custom-file input {
+  cursor: pointer !important;
+}
+
+.custom-file-input {
+  width: 50% !important;
+}
+
+.cloudinary-fileupload {
   position: relative;
   z-index: 2;
-  width: 100%;
+  width: 500%;
   height: calc(1.5em + .75rem + 2px);
   margin: 0;
   opacity: 0;
-} */
+}
+
+.cloudinary-fileupload::after {
+  line-height: 1.5;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  height: calc(1.5em + .75rem);
+  padding: .375rem .75rem;
+  content: 'Browse';
+  color: #3e4676;
+  border-left: inherit;
+  border-radius: 0 .25rem .25rem 0;
+  background-color: #fff;
+}
