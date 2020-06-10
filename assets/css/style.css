@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+  color: #333 !important;
+}
+
 .sub-menu {
   background: #00BF99;
 }
@@ -21,12 +28,12 @@
 }
 
 .btn-warning:hover {
-  background-color: #FBCE2E !important;
+  background-color: #CCAD3E !important;
 }
 
 .btn-danger {
-  border: #AC3931 !important;
-  background-color: #AC3931 !important;
+  border: #E54B4B !important;
+  background-color: #E54B4B !important;
 }
 
 .btn-danger:hover {
@@ -43,6 +50,18 @@
   background-color: #00BF99 !important;
   border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
+}
+
+.form-control {
+  color: #333 !important;
+}
+
+.listing-title {
+  color: #00BF99 !important;
+}
+
+.input-group-text {
+  color: #00BF99 !important;
 }
 
 .custom-file input {

@@ -38,10 +38,10 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-6">
-                      <h5 class="card-title m-b-0">Title:<br /> {{ listing.title }}</h5>
-                      <p>Description:<br /> {{ listing.description }}</p>
-                      <p>Price:<br /> ${{ listing.price }}</p>
-                      <p>Location:<br /> {{ listing.suburb }}, {{ listing.state }}</p>
+                      <h5 class="card-title m-b-0">{{ listing.title }}</h5>
+                      <p><span class="listing-title">Description</span><br /> {{ listing.description }}</p>
+                      <p><span class="listing-title">Price</span><br /> ${{ listing.price }}</p>
+                      <p><span class="listing-title">Location</span><br /> {{ listing.suburb }}, {{ listing.state }}</p>
                     </div>
 
                     <div class="col-6">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="card-footer text-center">
                   <a href="#" class="btn btn-success">View</a>
-                  <a href="#" class="btn btn-warning">Edit</a>
+                  <a href="/edit-listing" class="btn btn-warning">Edit</a>
                   <a href="#" class="btn btn-danger">Delete</a>
                 </div>
               </div>
