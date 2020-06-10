@@ -1,6 +1,7 @@
 <?php
 
 include_once('classes/objects/listings.php'); //load listing class
+include_once('classes/cloudinary_config.php'); //load cloudinary config
 
 $listings = new Listings(Flight::get('db'));
 
@@ -13,4 +14,6 @@ $twig = new \Twig\Environment($loader, [
 
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
-echo $twig->render('add-listing.html', ['myListings' => $listings->getAllListings(), 'page' => 'addListing']);
+$cloudinaryUploudInputField = cl_upload_tag('image_id', array("callback" => $cors_location));
+
+echo $twig->render('add-listing.html', ['myListings' => $listings->getAllListings(), 'cloudinaryUpload' => $cloudinaryUploudInputField, 'page' => 'addListing']);
