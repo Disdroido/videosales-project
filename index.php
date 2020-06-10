@@ -19,7 +19,7 @@ Flight::route('/', function(){
 });
 
 Flight::route('/my-listings', function(){
-	include "pages/your-listings.php";
+	include "pages/my-listings.php";
 });
 
 Flight::route('/add-listing', function(){
