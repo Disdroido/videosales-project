@@ -25,7 +25,9 @@ Flight::route('/add/listing', function(){
   $listings->price = Flight::request()->data->price;
   $listings->suburb = Flight::request()->data->suburb;
   $listings->state = Flight::request()->data->state;
+  $listings->description = Flight::request()->data->description;
   $listings->videoUrl = Flight::request()->data->videoUrl;
+  $listings->publicId = Flight::request()->data->publicId;
 	Flight::json($listings->addListing());
 });
 

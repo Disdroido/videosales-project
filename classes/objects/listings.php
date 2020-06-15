@@ -11,7 +11,9 @@ class Listings {
 	public $price;
 	public $suburb;
 	public $state;
+	public $description;
 	public $videoUrl;
+	public $publicId;
 
 	public function __construct($db){
 		$this->conn = $db;
@@ -34,14 +36,16 @@ class Listings {
 		$this->categoryId = 1; //testing
 		$this->userId = 1; //testing
 
-		$query = 'INSERT INTO '.$this->tableListing.' (title, price, suburb, state, videoUrl, categoryId, userId) VALUES (:title, :price, :suburb, :state, :videoUrl, :categoryId, :userId)';
+		$query = 'INSERT INTO '.$this->tableListing.' (title, price, suburb, state, description, videoUrl, publicId, categoryId, userId) VALUES (:title, :price, :suburb, :state, :description, :videoUrl, :publicId, :categoryId, :userId)';
 		$stmt = $this->conn->prepare($query);
 
 		$stmt->bindValue(':title', $this->title,PDO::PARAM_STR);
 		$stmt->bindValue(':price', $this->price, PDO::PARAM_STR);
 		$stmt->bindValue(':suburb', $this->suburb, PDO::PARAM_STR);
 		$stmt->bindValue(':state', $this->state, PDO::PARAM_STR);
+		$stmt->bindValue(':description', $this->description, PDO::PARAM_STR);
 		$stmt->bindValue(':videoUrl', $this->videoUrl, PDO::PARAM_STR);
+		$stmt->bindValue(':publicId', $this->publicId, PDO::PARAM_STR);
 		$stmt->bindValue(':categoryId', $this->categoryId, PDO::PARAM_INT);
 		$stmt->bindValue(':userId', $this->userId, PDO::PARAM_INT);
 
@@ -61,6 +65,10 @@ class Listings {
 		return $result;
 		}
 
+		}
+
+		public function deleteListing(){
+			
 		}
 
 }
