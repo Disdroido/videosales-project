@@ -95,6 +95,38 @@
 
   <script src="assets/vendor/DataTables/datatables.min.js"></script>
 
+  <script type="text/javascript">
+  $(document).on("click", ".delete-listing", function() {
+
+    $.blockUI();
+    var title = $("#title").val();
+    var price = $("#price").val();
+    var suburb = $("#suburb").val();
+    var state = $("#state").val();
+    var description = $("#description").val();
+    var videoUrl = url;
+    var publicId = videoId;
+
+    $.post("api/listings/add/listing", {
+    title: title,
+    price: price,
+    suburb: suburb,
+    state: state,
+    description: description,
+    videoUrl: videoUrl,
+    publicId: publicId
+    })
+
+    .done(function(data) {
+    Swal.fire({
+    type: 'success',
+    title: 'Yay!',
+    text: 'Your new listing added.'
+    });
+    });
+  });
+  </script>
+
 </body>
 
 </html>

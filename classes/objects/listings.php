@@ -68,7 +68,11 @@ class Listings {
 		}
 
 		public function deleteListing(){
-			
+			if (isset($_POST['delete'])) {
+				$query = $conn->prepare('UPDATE'.$this->tableListing.'SET status=1 WHERE listingId =:listingId');
+
+				$stmt->execute([$status, $listingId]);
+			}
 		}
 
 }
