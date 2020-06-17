@@ -30,59 +30,13 @@
       <div class="container pull-up">
         <div class="container">
           <div class="row">
-            <div class="col-lg-4">
+            {% if listing.status == 0 %}
+            Under review
+            {% elseif listing.status == 1 %}
 
-              <div class="card m-b-30">
-                  <div class="card-header">
-                      <h5 class="card-title m-b-0">TEST</h5>
-                  </div>
-                  <div class="card-body">
-                      <p class="card-text">Test</p>
-                  </div>
-                  <div class="card-footer">
-                      <a href="#!" class="btn btn-success">Button</a>
-                  </div>
-              </div>
-
-            </div>
-
-            <div class="col-lg-4">
-
-              <div class="card m-b-30">
-                  <div class="card-header">
-                      <h5 class="card-title m-b-0">TEST</h5>
-                  </div>
-                  <div class="card-body">
-                      <p class="card-text">Test</p>
-                  </div>
-                  <div class="card-footer">
-                      <a href="#!" class="btn btn-success">Button</a>
-                  </div>
-              </div>
-
-            </div>
-
-            <div class="col-lg-4">
-
-              <div class="card m-b-30">
-                  <div class="card-header">
-                      <h5 class="card-title m-b-0">TEST</h5>
-                  </div>
-                  <div class="card-body">
-                      <p class="card-text">Test</p>
-                  </div>
-                  <div class="card-footer">
-                      <a href="#!" class="btn btn-success">Button</a>
-                  </div>
-              </div>
-
-            </div>
-
+            {% endif %}
           </div>
-
-
         </div>
-
       </div>
     </section>
 
@@ -103,15 +57,46 @@
   <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
   <script src="assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
   <script src="assets/js/atmos.min.js"></script>
-  <script src="assets/js/template7.js"></script>
   <!--page specific scripts for demo-->
 
-  <!--Additional Page includes-->
-  <script src="assets/vendor/apexchart/apexcharts.min.js"></script>
-  <!--chart data for current dashboard-->
-  <script src="assets/js/dashboard-01.js"></script>
-
   <script src="assets/vendor/DataTables/datatables.min.js"></script>
+
+  <script>
+  $(document).on("click", ".delete-listing", function() {
+    var id = $(this).attr('id');
+
+    $.post("api/listings/remove/listing", {id: id}, function(){})
+    .done(function(data) {
+      if(data.result == 'true') {
+        Swal.fire({
+        type: 'success',
+        title: 'Succces',
+        text: 'You have successfully removed this listing. Status: '+data.result
+        });
+        setTimeout(function(){
+          location.reload();
+        }, 1500);
+    } else if (data.result == 'failed'){
+      Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'There was an error deleting your listing. Please try again.'
+      //text: 'There was an error deleting your listing. Please try again.'.data.db_error
+      });
+    }
+    })
+    .fail(function(data) {
+        Swal.fire({
+        type: 'error',
+        title: 'Error',
+        text: 'There was an error contacting the server.'
+        });
+      setTimeout(function(){
+        location.reload();
+      }, 1500);
+    });
+  });
+  </script>
 
 </body>
 

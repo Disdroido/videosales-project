@@ -22,6 +22,11 @@
         </ul>
       </li>
       <li class="menu-item {% if page == 'settings' %}active{% endif %}"> <a href="settings" class=" menu-link"> <span class="menu-label"> <span class="menu-name">Settings </span> </span> <span class="menu-icon"> <i class="mdi mdi-settings "></i> </span> </a> </li>
+      {% if user.role == admin %}
+      <li class="menu-item {% if page == 'review' %}active{% endif %}"> <a href="review" class=" menu-link"> <span class="menu-label"> <span class="menu-name">Review </span> </span> <span class="menu-icon"> <i class="mdi mdi-feature-search "></i> </span> </a> </li>
+      {% elseif user.role == standard %}
+
+      {% endif %}
     </ul>
   </div>
 

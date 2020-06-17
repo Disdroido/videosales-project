@@ -52,26 +52,33 @@ class Listings {
 		$stmt->execute();
 		$count = $stmt->rowCount();
 
-		if($count < 1) {
-
-		$error = $stmt->errorInfo();
-		$result['result'] = 'failed';
-		$result['db_errror'] = $error; //not displaying errors on production site
-		return $result;
-
+		if($count > 0) {
+			$result['result'] = "true";
+			return $result;
 		} else {
-		$result['result'] = "true";
-
-		return $result;
+			$error = $stmt->errorInfo();
+			$result['result'] = 'failed';
+			$result['db_error'] = $error; //not displaying errors on production site
+			return $result;
 		}
-
-		}
+	}
 
 		public function deleteListing(){
-			if (isset($_POST['delete'])) {
-				$query = $conn->prepare('UPDATE'.$this->tableListing.'SET status=1 WHERE listingId =:listingId');
+			$query = 'UPDATE '.$this->tableListing.' SET status = 2 WHERE listingId = :listingId';
+			$stmt = $this->conn->prepare($query);
 
-				$stmt->execute([$status, $listingId]);
+			$stmt->bindValue(':listingId', $this->listingId, PDO::PARAM_INT);
+			$stmt->execute();
+			$count = $stmt->rowCount();
+
+			if($count > 0) {
+				$result['result'] = "true";
+				return $result;
+			} else {
+				$error = $stmt->errorInfo();
+				$result['result'] = 'failed';
+				$result['db_error'] = $error; //not displaying errors on production site
+				return $result;
 			}
 		}
 

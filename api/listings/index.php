@@ -31,6 +31,12 @@ Flight::route('/add/listing', function(){
 	Flight::json($listings->addListing());
 });
 
+Flight::route('/remove/listing', function(){
+  $listings = new Listings(Flight::get('db'));
+  $listings->listingId = Flight::request()->data->id;
+  Flight::json($listings->deleteListing());
+});
+
 Flight::start();
 
 ?>

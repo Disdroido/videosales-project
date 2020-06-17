@@ -42,6 +42,16 @@
                       <p><span class="listing-title">Description</span><br /> {{ listing.description }}</p>
                       <p><span class="listing-title">Price</span><br /> ${{ listing.price }}</p>
                       <p><span class="listing-title">Location</span><br /> {{ listing.suburb }}, {{ listing.state }}</p>
+                      <p><span class="listing-title">Status</span><br />
+                        {% if listing.status == 0 %}
+                        Under review
+                        {% elseif listing.status == 1 %}
+                        Published
+                        {% elseif listing.status == 2 %}
+                        Sold!
+                        {% endif %}
+
+                      </p>
                     </div>
 
                     <div class="col-6">
@@ -52,8 +62,14 @@
                   </div>
                 </div>
                 <div class="card-footer text-center">
+                  {% if listing.status == 0 %}
                   <a href="/edit-listing" class="btn btn-warning">Edit</a>
-                  <a href="#" class="btn btn-danger">Delete</a>
+                  {% elseif listing.status == 1 %}
+                  <a href="/edit-listing" class="btn btn-warning">Edit</a>
+                  <a href="" id="{{listing.listingId}}" class="btn btn-danger delete-listing">Remove</a>
+                  {% elseif listing.status == 2 %}
+
+                  {% endif %}
                 </div>
               </div>
 
@@ -85,44 +101,43 @@
   <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
   <script src="assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
   <script src="assets/js/atmos.min.js"></script>
-  <script src="assets/js/template7.js"></script>
   <!--page specific scripts for demo-->
-
-  <!--Additional Page includes-->
-  <script src="assets/vendor/apexchart/apexcharts.min.js"></script>
-  <!--chart data for current dashboard-->
-  <script src="assets/js/dashboard-01.js"></script>
 
   <script src="assets/vendor/DataTables/datatables.min.js"></script>
 
-  <script type="text/javascript">
+  <script>
   $(document).on("click", ".delete-listing", function() {
+    var id = $(this).attr('id');
 
-    $.blockUI();
-    var title = $("#title").val();
-    var price = $("#price").val();
-    var suburb = $("#suburb").val();
-    var state = $("#state").val();
-    var description = $("#description").val();
-    var videoUrl = url;
-    var publicId = videoId;
-
-    $.post("api/listings/add/listing", {
-    title: title,
-    price: price,
-    suburb: suburb,
-    state: state,
-    description: description,
-    videoUrl: videoUrl,
-    publicId: publicId
-    })
-
+    $.post("api/listings/remove/listing", {id: id}, function(){})
     .done(function(data) {
-    Swal.fire({
-    type: 'success',
-    title: 'Yay!',
-    text: 'Your new listing added.'
-    });
+      if(data.result == 'true') {
+        Swal.fire({
+        type: 'success',
+        title: 'Succces',
+        text: 'You have successfully removed this listing. Status: '+data.result
+        });
+        setTimeout(function(){
+          location.reload();
+        }, 1500);
+    } else if (data.result == 'failed'){
+      Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'There was an error deleting your listing. Please try again.'
+      //text: 'There was an error deleting your listing. Please try again.'.data.db_error
+      });
+    }
+    })
+    .fail(function(data) {
+        Swal.fire({
+        type: 'error',
+        title: 'Error',
+        text: 'There was an error contacting the server.'
+        });
+      setTimeout(function(){
+        location.reload();
+      }, 1500);
     });
   });
   </script>
