@@ -20,7 +20,7 @@
                   <div class="col-12 p-t-40 p-b-40">
 
                       <h1>Dashboard</h1>
-                      <p>Welcome {{name}}</p>
+                      <p>Welcome</p>
 
                   </div>
               </div>
@@ -30,11 +30,54 @@
       <div class="container pull-up">
         <div class="container">
           <div class="row">
-            {% if listing.status == 0 %}
-            Under review
-            {% elseif listing.status == 1 %}
 
+            {% for listing in myListings %}
+            {% if listing.status == 1 %}
+            <div class="col-12">
+
+              <div class="card m-b-30">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <h5 class="card-title m-b-0">{{ listing.title }}</h5>
+                      <p><span class="listing-title">Description</span><br /> {{ listing.description }}</p>
+                      <p><span class="listing-title">Price</span><br /> ${{ listing.price }}</p>
+                      <p><span class="listing-title">Location</span><br /> {{ listing.suburb }}, {{ listing.state }}</p>
+                      <p><span class="listing-title">Status</span><br />
+                        {% if listing.status == 0 %}
+                        Under review
+                        {% elseif listing.status == 1 %}
+                        Published
+                        {% elseif listing.status == 2 %}
+                        Sold!
+                        {% endif %}
+
+                      </p>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="1280" height="720" src="{{ listing.videoUrl }}" allow="encrypted-media" allowfullscreen></iframe>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer text-center">
+                  {% if listing.status == 0 %}
+                  <a href="/edit-listing" class="btn btn-warning">Edit</a>
+                  {% elseif listing.status == 1 %}
+                  <a href="/edit-listing" class="btn btn-warning">Edit</a>
+                  <a href="" id="{{listing.listingId}}" class="btn btn-danger delete-listing">Remove</a>
+                  {% elseif listing.status == 2 %}
+
+                  {% endif %}
+                </div>
+              </div>
+
+            </div>
             {% endif %}
+            {% endfor %}
+
           </div>
         </div>
       </div>

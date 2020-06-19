@@ -37,6 +37,19 @@ Flight::route('/remove/listing', function(){
   Flight::json($listings->deleteListing());
 });
 
+Flight::route('/edit/listing', function(){
+  $listings = new Listings(Flight::get('db'));
+  $listings->title = Flight::request()->data->title;
+  $listings->price = Flight::request()->data->price;
+  $listings->suburb = Flight::request()->data->suburb;
+  $listings->state = Flight::request()->data->state;
+  $listings->description = Flight::request()->data->description;
+  $listings->listingId = Flight::request()->data->listingId;
+  // $listings->videoUrl = Flight::request()->data->videoUrl;
+  //$listings->publicId = Flight::request()->data->publicId;
+	Flight::json($listings->editListing());
+});
+
 Flight::start();
 
 ?>

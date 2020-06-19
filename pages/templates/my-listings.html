@@ -63,27 +63,21 @@
                 </div>
                 <div class="card-footer text-center">
                   {% if listing.status == 0 %}
-                  <a href="/edit-listing" class="btn btn-warning">Edit</a>
+                  <a href="/edit-listing?id={{listing.listingId}}" class="btn btn-warning">Edit</a>
                   {% elseif listing.status == 1 %}
-                  <a href="/edit-listing" class="btn btn-warning">Edit</a>
+                  <a href="/edit-listing?id={{listing.listingId}}" class="btn btn-warning">Edit</a>
                   <a href="" id="{{listing.listingId}}" class="btn btn-danger delete-listing">Remove</a>
                   {% elseif listing.status == 2 %}
 
                   {% endif %}
                 </div>
               </div>
-
             </div>
             {% endfor %}
-
           </div>
-
-
         </div>
-
       </div>
     </section>
-
   </main>
 
   <script src="assets/vendor/jquery/jquery.min.js"></script>
@@ -102,7 +96,6 @@
   <script src="assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
   <script src="assets/js/atmos.min.js"></script>
   <!--page specific scripts for demo-->
-
   <script src="assets/vendor/DataTables/datatables.min.js"></script>
 
   <script>

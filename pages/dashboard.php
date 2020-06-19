@@ -1,5 +1,9 @@
 <?php
 
+include_once('classes/objects/listings.php'); //load listing class
+
+$listings = new Listings(Flight::get('db'));
+
 $loader = new \Twig\Loader\FilesystemLoader('pages/templates');
 $twig = new \Twig\Environment($loader, [
   'debug' => true, //remove on live
@@ -9,4 +13,4 @@ $twig = new \Twig\Environment($loader, [
 
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
-echo $twig->render('dashboard.html', ['name' => 'Ethan Worth', 'page' => 'dashboard']);
+echo $twig->render('dashboard.html', ['myListings' => $listings->getAllListings(), 'page' => 'dashboard']);
