@@ -20,7 +20,7 @@
               <div class="row p-b-40">
                   <div class="col-12 p-t-40 p-b-40">
 
-                      <h1>Add a New Listing</h1>
+                      <h1>Add A New Listing</h1>
 
                   </div>
               </div>
@@ -73,6 +73,18 @@
                         <label for="state">State</label>
                         <input id="state" type="text" name="state" class="form-control">
                       </div>
+                    </div>
+
+                    <div class="form-group col-md-12 px-0" style="background: transparent;">
+                      <label for="category">Category</label>
+                      <select id="category" class="form-control category-select">
+                        <option value="1">1</option>
+                        <option value="2">Clothes</option>
+                        <option value="3">Electronics</option>
+                        <option value="4">Garden</option>
+                        <option value="5">Kitchen</option>
+                        <option value="6">Other</option>
+                      </select>
                     </div>
 
                     <div class="form-group">
@@ -147,8 +159,6 @@
   });
 
   $(document).on("click", ".add-listing", function() {
-
-    $.blockUI();
     var title = $("#title").val();
     var price = $("#price").val();
     var suburb = $("#suburb").val();
@@ -156,25 +166,51 @@
     var description = $("#description").val();
     var videoUrl = url;
     var publicId = videoId;
+    var categoryId = $("#category").val();
 
     $.post("api/listings/add/listing", {
-    title: title,
-    price: price,
-    suburb: suburb,
-    state: state,
-    description: description,
-    videoUrl: videoUrl,
-    publicId: publicId
+      title: title,
+      price: price,
+      suburb: suburb,
+      state: state,
+      description: description,
+      videoUrl: videoUrl,
+      publicId: publicId,
+      categoryId: categoryId
     })
 
     .done(function(data) {
-    Swal.fire({
-    type: 'success',
-    title: 'Yay!',
-    text: 'Your new listing added.'
-    });
+      if(data.result == 'true') {
+        Swal.fire({
+        type: 'success',
+        title: 'Succces',
+        text: 'You Added A Listing '
+        });
+        setTimeout(function(){
+          window.location.href = '/';
+        }, 1500);
+    } else if (data.result == 'failed'){
+      Swal.fire({
+      type: 'error',
+      title: 'Error',
+      // text: 'There was an error adding your listing. Please try again.'
+      text: 'There was an error adding your listing. Please try again.'.data.db_error
+      });
+    }
+    })
+    .fail(function(data) {
+      Swal.fire({
+        type: 'error',
+        title: 'Error',
+        text: 'There was an error contacting the server.'
+      });
+      setTimeout(function() {
+        
+      },1500);
     });
   });
+
+  $(".category-select").select2();
   </script>
 
 </body>

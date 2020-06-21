@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 header("Access-Control-Allow-Origin: *");
@@ -7,6 +6,7 @@ date_default_timezone_set('Australia/Sydney');
 require_once '../../vendor/autoload.php';
 require_once '../../classes/database.php';
 include_once "../../classes/objects/listings.php";
+include_once "../../classes/objects/users.php";
 
 $referring_url = $_SERVER['HTTP_HOST']; //if localhost use different db conn
 
@@ -28,6 +28,7 @@ Flight::route('/add/listing', function(){
   $listings->description = Flight::request()->data->description;
   $listings->videoUrl = Flight::request()->data->videoUrl;
   $listings->publicId = Flight::request()->data->publicId;
+  $listings->categoryId = Flight::request()->data->categoryId;
 	Flight::json($listings->addListing());
 });
 

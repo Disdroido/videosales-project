@@ -34,6 +34,10 @@ Flight::route('/settings', function(){
 	include "pages/settings.php";
 });
 
+Flight::route('/register', function(){
+	include "pages/register.php";
+});
+
 Flight::route('/logout', function(){
 
 });

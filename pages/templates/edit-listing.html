@@ -186,7 +186,7 @@
         text: 'You Edited your {{ listing.title }} Listing '
         });
         setTimeout(function(){
-          location.reload();
+          window.location.href = '/';
         }, 1500);
     } else if (data.result == 'failed'){
       Swal.fire({
@@ -204,7 +204,7 @@
         text: 'There was an error contacting the server.'
       });
       setTimeout(function() {
-        window.location.href = 'dashboard.php';
+        window.location.href = 'my-listings';
       },1500);
     });
   });

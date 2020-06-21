@@ -48,7 +48,6 @@ class Listings {
 	}
 
 	public function addListing(){
-		$this->categoryId = 1; //testing
 		$this->userId = 1; //testing
 
 		$query = 'INSERT INTO '.$this->tableListing.' (title, price, suburb, state, description, videoUrl, publicId, categoryId, userId)

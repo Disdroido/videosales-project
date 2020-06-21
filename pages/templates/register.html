@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{ include('partials/header.html') }}
+
+<body class=" ">
+
+  <main class="">
+    <section class="admin-content">
+
+      <div class="container-fluid">
+        <div class="row ">
+            <div class="col-lg-4  bg-white">
+                <div class="row align-items-center m-h-100">
+                    <div class="mx-auto col-md-8">
+                        <form class="needs-validation" action="" novalidate="novalidate">
+                            <div class="p-b-20 text-center">
+                                <p>
+                                  <img src="assets/img/logo.svg" alt="" width="80">
+                                </p>
+                                <p class="admin-brand-content">VideoSales</p>
+                            </div>
+                            <h3 class="text-center p-b-20 fw-400">Register</h3>
+
+                            <div class="form-row">
+                                <div class="form-group floating-label col-md-12">
+                                    <label>Firstname</label>
+                                    <input type="text" class="form-control" required="" id="firstname" placeholder="Firstname">
+                                </div>
+                                <div class="form-group floating-label col-md-12">
+                                    <label>Surname</label>
+                                    <input type="text" class="form-control " required="" id="surname" placeholder="Surname">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group floating-label col-md-12">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" required="" id="email" placeholder="Email">
+                                </div>
+                                <div class="form-group floating-label col-md-12">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control " required="" id="password" placeholder="Password">
+                                </div>
+                            </div>
+
+                            <div class="form-group floating-label">
+                                <label>Password Again</label>
+                                <input type="password" class="form-control" required="" id="confirm_password" placeholder="Password Again">
+                            </div>
+
+                            <p>
+                                <label class="cstm-switch">
+                                    <input type="checkbox" checked="" name="option" value="1" class="cstm-switch-input">
+                                    <span class="cstm-switch-indicator "></span>
+                                    <span class="cstm-switch-description">  I agree to the Terms and Privacy. </span>
+                                </label>
+                            </p>
+
+                            <a class="register-user btn btn-success btn-block btn-lg">Register</a>
+
+                        </form>
+                        <p class="text-right p-t-10"><a href="#!" class="text-underline">Already a user?</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 d-none d-md-block bg-cover" style="background-image: url('assets/img/auth.svg');"></div>
+        </div>
+    </div>
+
+    </section>
+
+  </main>
+
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+  <script src="assets/vendor/blockui/jquery.blockUI.js"></script>
+  <script src="assets/vendor/sweetalert/sweetalert2.all.min.js"></script>
+
+  <script src="assets/vendor/popper/popper.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/vendor/select2/js/select2.full.min.js"></script>
+  <script src="assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="assets/vendor/listjs/listjs.min.js"></script>
+  <script src="assets/vendor/moment/moment.min.js"></script>
+  <script src="assets/vendor/daterangepicker/daterangepicker.js"></script>
+  <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script src="assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+  <script src="assets/js/atmos.min.js"></script>
+  <!--page specific scripts for demo-->
+  <script src="assets/vendor/DataTables/datatables.min.js"></script>
+
+  <script>
+  $(document).on("click", ".register-user", function() {
+    var firstname = $("#firstname").val();
+    var surname = $("#surname").val();
+    var email = $("#email").val();
+    var password = $("#password").val();
+
+    $.post("api/users/register/user", {
+      firstname: firstname,
+      surname: surname,
+      email: email,
+      password: password
+    })
+
+    .done(function(data) {
+      if(data.result == 'true') {
+        Swal.fire({
+        type: 'success',
+        title: 'Succces',
+        text: 'Thank You For Registering!'
+        });
+        setTimeout(function(){
+          window.location.href = '/';
+        }, 1500);
+    } else if (data.result == 'failed'){
+      Swal.fire({
+      type: 'error',
+      title: 'Error',
+      // text: 'There was an error adding your listing. Please try again.'
+      text: 'There was an error adding your listing. Please try again.'.data.db_error
+      });
+    }
+    })
+    .fail(function(data) {
+      Swal.fire({
+        type: 'error',
+        title: 'Error',
+        text: 'There was an error contacting the server.'
+      });
+      setTimeout(function() {
+
+      },1500);
+    });
+  });
+  </script>
+
+</body>
+</html>
