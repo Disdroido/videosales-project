@@ -24,7 +24,7 @@ class Users {
     $stmt->bindValue(':firstname', $this->firstname,PDO::PARAM_STR);
     $stmt->bindValue(':surname', $this->surname,PDO::PARAM_STR);
     $stmt->bindValue(':email', $this->email,PDO::PARAM_STR);
-    $stmt->bindValue(':hashedPassword', $this->password,PDO::PARAM_STR);
+    $stmt->bindValue(':hashedPassword', $hashedPassword,PDO::PARAM_STR);
 
     $stmt->execute();
     $count = $stmt->rowCount();
@@ -38,6 +38,10 @@ class Users {
       $result['db_error'] = $error; //not displaying errors on production site
       return $result;
     }
+  }
+
+  public function loginUser(){
+
   }
 
 }

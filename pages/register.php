@@ -13,4 +13,4 @@ $twig = new \Twig\Environment($loader, [
 
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
-echo $twig->render('register.html', ['register' => $users->registerUser(), 'page' => 'register']);
+echo $twig->render('register.html', ['page' => 'register']);

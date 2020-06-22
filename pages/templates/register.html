@@ -103,7 +103,6 @@
       email: email,
       password: password
     })
-
     .done(function(data) {
       if(data.result == 'true') {
         Swal.fire({
@@ -112,7 +111,7 @@
         text: 'Thank You For Registering!'
         });
         setTimeout(function(){
-          window.location.href = '/';
+          window.location.href = ('/dashboard');
         }, 2000);
     } else if (data.result == 'failed'){
       Swal.fire({
@@ -130,7 +129,7 @@
         text: 'There was an error contacting the server.'
       });
       setTimeout(function() {
-        window.location.href = '/';
+        window.location.href = ('/random');
       }, 2000);
     });
   });
