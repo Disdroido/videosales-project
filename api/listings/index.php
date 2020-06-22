@@ -6,7 +6,6 @@ date_default_timezone_set('Australia/Sydney');
 require_once '../../vendor/autoload.php';
 require_once '../../classes/database.php';
 include_once "../../classes/objects/listings.php";
-include_once "../../classes/objects/users.php";
 
 $referring_url = $_SERVER['HTTP_HOST']; //if localhost use different db conn
 
@@ -46,8 +45,9 @@ Flight::route('/edit/listing', function(){
   $listings->state = Flight::request()->data->state;
   $listings->description = Flight::request()->data->description;
   $listings->listingId = Flight::request()->data->listingId;
+  $listings->categoryId = Flight::request()->data->categoryId;
   // $listings->videoUrl = Flight::request()->data->videoUrl;
-  //$listings->publicId = Flight::request()->data->publicId;
+  $listings->publicId = Flight::request()->data->publicId;
 	Flight::json($listings->editListing());
 });
 

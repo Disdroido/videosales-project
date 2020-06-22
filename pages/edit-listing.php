@@ -8,7 +8,7 @@ $listings = new Listings(Flight::get('db'));
 if(isset($_GET['id'])){
   $listings->listingId = $_GET['id'];
 } else {
-  header('Location: /');
+  header('Location: my-listings');
   exit();
 }
 
@@ -27,4 +27,4 @@ $cloudinaryUploudInputField = cl_upload_tag('video_id', array("resource_type" =>
   "html" => array("id" => "my_upload_tag")
 ));
 
-echo $twig->render('edit-listing.html', ['listing' => $listings->getListing(), 'cloudinaryUpload' => $cloudinaryUploudInputField, 'page' => 'editListing']);
+echo $twig->render('edit-listing.html', ['editListing' => $listings->getListing(), 'cloudinaryUpload' => $cloudinaryUploudInputField, 'page' => 'editListing']);

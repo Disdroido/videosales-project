@@ -45,7 +45,7 @@
                   <div class="row">
                     <div class="col-6">
                       <h5 class="card-title m-b-0">{{ listing.title }}</h5>
-                      <p><span class="listing-title">Description</span><br /> {{ listing.description }}</p>
+                      <p><span class="listing-title">Description</span><br /> {{ listing.description|nl2br }}</p>
                       <p><span class="listing-title">Price</span><br /> ${{ listing.price }}</p>
                       <p><span class="listing-title">Location</span><br /> {{ listing.suburb }}, {{ listing.state }}</p>
                       <p><span class="listing-title">Status</span><br />
