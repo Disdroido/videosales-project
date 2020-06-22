@@ -90,9 +90,21 @@
                       </div>
                     </div>
 
+                    <div class="form-group col-md-12 px-0" style="background: transparent;">
+                      <label for="category">Category</label>
+                      <select id="category" class="form-control category-select">
+                        <option value="1">Cars</option>
+                        <option value="2">Clothes</option>
+                        <option value="3">Electronics</option>
+                        <option value="4">Garden</option>
+                        <option value="5">Kitchen</option>
+                        <option value="6">Other</option>
+                      </select>
+                    </div>
+
                     <div class="form-group">
                       <label for="description">Description</label>
-                      <textarea id="description" name="description" type="text" class="form-control" rows="8" cols="100%">{{ listing.description }}</textarea>
+                      <textarea id="description" name="description" type="text" class="form-control" rows="8" cols="100%">{{ listing.description|nl2br }}</textarea>
                     </div>
 
                     <div class="form-group">
@@ -152,7 +164,7 @@
 
   $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {
     $('.preview');
-    $('.image_public_id').val(data.result.public_id);
+    videoId = (data.result.public_id);
     url = (data.result.secure_url);
     $('.preview').append('<div class="embed-responsive embed-responsive-21by9"><iframe class="embed-responsive-item" src="'+url+'" allow="encrypted-media" allowfullscreen></iframe></div>');
     return true;
@@ -167,6 +179,8 @@
     var state = $("#state").val();
     var description = $("#description").val();
     var listingId = {{listing.listingId}};
+    var categoryId = $("#category").val();
+    var publicId = videoId;
     // var videoUrl = url;
 
     $.post("api/listings/edit/listing", {
@@ -175,7 +189,9 @@
       suburb: suburb,
       state: state,
       description: description,
-      listingId: listingId
+      listingId: listingId,
+      categoryId: categoryId,
+      publicId: publicId
       // videoUrl: videoUrl,
     })
     .done(function(data) {
@@ -186,7 +202,7 @@
         text: 'You Edited your {{ listing.title }} Listing '
         });
         setTimeout(function(){
-          window.location.href = '/';
+          window.location.href = 'my-listings';
         }, 1500);
     } else if (data.result == 'failed'){
       Swal.fire({
@@ -208,6 +224,8 @@
       },1500);
     });
   });
+
+  $(".category-select").select2();
   </script>
 
 </body>
