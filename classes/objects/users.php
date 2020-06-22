@@ -16,13 +16,15 @@ class Users {
 	}
 
   public function registerUser(){
-    $query = 'INSERT INTO '.$this->tableUsers.' (firstname, surname, email, password) VALUES (:firstname, :surname, :email, :password)';
+    $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+
+    $query = 'INSERT INTO '.$this->tableUsers.' (firstname, surname, email, password) VALUES (:firstname, :surname, :email, :hashedPassword)';
     $stmt = $this->conn->prepare($query);
 
     $stmt->bindValue(':firstname', $this->firstname,PDO::PARAM_STR);
     $stmt->bindValue(':surname', $this->surname,PDO::PARAM_STR);
     $stmt->bindValue(':email', $this->email,PDO::PARAM_STR);
-    $stmt->bindValue(':password', $this->password,PDO::PARAM_STR);
+    $stmt->bindValue(':hashedPassword', $this->password,PDO::PARAM_STR);
 
     $stmt->execute();
     $count = $stmt->rowCount();

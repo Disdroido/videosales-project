@@ -57,7 +57,7 @@
                                 </label>
                             </p>
 
-                            <a class="register-user btn btn-success btn-block btn-lg">Register</a>
+                            <a href="" class="register-user btn btn-success btn-block btn-lg">Register</a>
 
                         </form>
                         <p class="text-right p-t-10"><a href="#!" class="text-underline">Already a user?</a></p>
@@ -113,7 +113,7 @@
         });
         setTimeout(function(){
           window.location.href = '/';
-        }, 1500);
+        }, 2000);
     } else if (data.result == 'failed'){
       Swal.fire({
       type: 'error',
@@ -130,8 +130,8 @@
         text: 'There was an error contacting the server.'
       });
       setTimeout(function() {
-
-      },1500);
+        window.location.href = '/';
+      }, 2000);
     });
   });
   </script>

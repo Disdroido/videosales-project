@@ -5,6 +5,10 @@ body {
   color: #333 !important;
 }
 
+a:hover {
+  cursor: pointer !important;
+}
+
 .sub-menu {
   background: #00BF99;
 }
