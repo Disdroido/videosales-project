@@ -180,7 +180,7 @@
     var description = $("#description").val();
     var listingId = {{listing.listingId}};
     var categoryId = $("#category").val();
-    var publicId = videoId;
+    // var publicId = videoId;
     // var videoUrl = url;
 
     $.post("api/listings/edit/listing", {
@@ -191,7 +191,7 @@
       description: description,
       listingId: listingId,
       categoryId: categoryId,
-      publicId: publicId
+      // publicId: publicId
       // videoUrl: videoUrl,
     })
     .done(function(data) {
