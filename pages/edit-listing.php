@@ -27,4 +27,4 @@ $cloudinaryUploudInputField = cl_upload_tag('video_id', array("resource_type" =>
   "html" => array("id" => "my_upload_tag")
 ));
 
-echo $twig->render('edit-listing.html', ['myListings' => $listings->editListing(), 'cloudinaryUpload' => $cloudinaryUploudInputField, 'page' => 'editListing']);
+echo $twig->render('edit-listing.html', ['myListings' => $listings->getListing(), 'cloudinaryUpload' => $cloudinaryUploudInputField, 'page' => 'editListing']);
