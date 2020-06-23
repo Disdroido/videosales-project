@@ -5,7 +5,7 @@ date_default_timezone_set('Australia/Sydney');
 
 require_once '../../vendor/autoload.php';
 require_once '../../classes/database.php';
-include_once "../../classes/objects/users.php";
+include_once '../../classes/objects/users.php';
 
 $referring_url = $_SERVER['HTTP_HOST']; //if localhost use different db conn
 
