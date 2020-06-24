@@ -20,7 +20,7 @@
               <div class="row p-b-40">
                   <div class="col-12 p-t-40 p-b-40">
 
-                      <h1>Edit Listing {{listing.title}}</h1>
+                      <h1>Edit Listing {{ myListing.title}}</h1>
 
                   </div>
               </div>
@@ -54,8 +54,8 @@
                   <div class="row mb-5">
                     <div class="col-md-6">
                       <div class="embed-responsive embed-responsive-21by9">
-                        <iframe class="embed-responsive-item" src="{{ listing.videoUrl }}" allow="encrypted-media" allowfullscreen></iframe>
-                        <input id="publicId" type="text" name="publicId" class="form-control" value="{{ listing.publicId }}" style="display:none">
+                        <iframe class="embed-responsive-item" src="{{ myListing.videoUrl }}" allow="encrypted-media" allowfullscreen></iframe>
+                        <input id="publicId" type="text" name="publicId" class="form-control" value="{{ myListing.publicId }}" style="display:none">
                       </div>
                     </div>
 
@@ -68,29 +68,29 @@
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="title">Title</label>
-                        <input id="title" type="text" name="title" class="form-control" value="{{ listing.title }}">
+                        <input id="title" type="text" name="title" class="form-control" value="{{ myListing.title }}">
 
                       </div>
 
                       <div class="form-group col-md-6">
                         <label for="price">Price (Number Only No $ Symbol)</label>
-                        <input id="price" type="text" name="price" class="form-control" value="{{ listing.price }}">
+                        <input id="price" type="text" name="price" class="form-control" value="{{ myListing.price }}">
                       </div>
                     </div>
 
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="suburb">Suburb</label>
-                        <input id="suburb" type="text" name="suburb" class="form-control" value="{{ listing.suburb }}">
+                        <input id="suburb" type="text" name="suburb" class="form-control" value="{{ myListing.suburb }}">
                       </div>
 
                       <div class="form-group col-md-6">
                         <label for="state">State</label>
-                        <input id="state" type="text" name="state" class="form-control" value="{{ listing.state }}">
+                        <input id="state" type="text" name="state" class="form-control" value="{{ myListing.state }}">
                       </div>
                     </div>
 
-                    <div class="form-group col-md-12 px-0" style="background: transparent;">
+                    <div class="form-group col-md-12 px-0">
                       <label for="category">Category</label>
                       <select id="category" class="form-control category-select">
                         <option value="1">Cars</option>
@@ -104,7 +104,7 @@
 
                     <div class="form-group">
                       <label for="description">Description</label>
-                      <textarea id="description" name="description" type="text" class="form-control" rows="8" cols="100%">{{ listing.description|nl2br }}</textarea>
+                      <textarea id="description" name="description" type="text" class="form-control" rows="8" cols="100%">{{ myListing.description|nl2br }}</textarea>
                     </div>
 
                     <div class="form-group">
@@ -122,19 +122,19 @@
 
   </main>
 
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/jquery-ui/jquery-ui.min.js"></script>
-  <script src="assets/vendor/blockui/jquery.blockUI.js"></script>
-  <script src="assets/vendor/sweetalert/sweetalert2.all.min.js"></script>
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+  <script src="/assets/vendor/blockui/jquery.blockUI.js"></script>
+  <script src="/assets/vendor/sweetalert/sweetalert2.all.min.js"></script>
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/vendor/select2/js/select2.full.min.js"></script>
-  <script src="assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="assets/vendor/listjs/listjs.min.js"></script>
-  <script src="assets/vendor/moment/moment.min.js"></script>
-  <script src="assets/vendor/daterangepicker/daterangepicker.js"></script>
-  <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-  <script src="assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/assets/vendor/select2/js/select2.full.min.js"></script>
+  <script src="/assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="/assets/vendor/listjs/listjs.min.js"></script>
+  <script src="/assets/vendor/moment/moment.min.js"></script>
+  <script src="/assets/vendor/daterangepicker/daterangepicker.js"></script>
+  <script src="/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script src="/assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
   <script src="assets/js/atmos.min.js"></script>
   <!-- Cloudinary upload js -->
   <script type="text/javascript" src="assets/js/jquery.ui.widget.js"></script>
@@ -142,7 +142,7 @@
   <script type="text/javascript" src="assets/js/jquery.fileupload.js"></script>
   <script type="text/javascript" src="assets/js/jquery.cloudinary.js"></script>
   <!--page specific scripts for demo-->
-  <script src="assets/vendor/DataTables/datatables.min.js"></script>
+  <script src="/assets/vendor/DataTables/datatables.min.js"></script>
 
   <script>
   $(function() {
@@ -178,8 +178,8 @@
     var suburb = $("#suburb").val();
     var state = $("#state").val();
     var description = $("#description").val();
-    var listingId = {{listing.listingId}};
-    // var categoryId = $("#category").val();
+    var listingId = {{ myListing.listingId}} ;
+    var categoryId = $("#category").val();
     // var publicId = videoId;
     // var videoUrl = url;
 
@@ -189,17 +189,17 @@
       suburb: suburb,
       state: state,
       description: description,
-      listingId: listingId
-      // categoryId: categoryId
+      listingId: listingId,
+      categoryId: categoryId
       // publicId: publicId
       // videoUrl: videoUrl,
-    })
+    }, function(){})
     .done(function(data) {
       if(data.result == 'true') {
         Swal.fire({
         type: 'success',
         title: 'Succces',
-        text: 'You Edited your {{ listing.title }} Listing '
+        text: 'You Edited your {{ myListing.title }} Listing '
         });
         setTimeout(function(){
           window.location.href = 'my-listings';
