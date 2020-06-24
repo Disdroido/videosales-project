@@ -11,7 +11,7 @@ $twig = new \Twig\Environment($loader, [
   //'cache' => __DIR__ .'/cache',
   //'autoload' => true //clears the cache when template source code updated
 ]);
-
+$twig->addGlobal('session', $_SESSION);
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
 $cloudinaryUploudInputField = cl_upload_tag('video_id', array("resource_type" => "video",
