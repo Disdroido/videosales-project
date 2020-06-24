@@ -15,9 +15,9 @@
                     <div class="mx-auto col-md-8">
                         <form class="needs-validation" action="" novalidate="novalidate">
                             <div class="p-b-20 text-center">
-                                <p>
-                                  <img src="/assets/img/logo.png" alt="" width="80">
-                                </p>
+                                <a href="/">
+                                  <img src="/assets/img/logo.png" alt="" height="30">
+                                </a>
                             </div>
                             <h3 class="text-center p-b-20 fw-400">Register</h3>
 
@@ -56,7 +56,7 @@
                                 </label>
                             </p>
 
-                            <a href="#" class="register-user btn btn-success btn-block btn-lg">Register</a>
+                            <a href="" class="register-user btn btn-success btn-block btn-lg">Register</a>
 
                         </form>
                         <p class="text-right p-t-10"><a href="#!" class="text-underline">Already a user?</a></p>
@@ -71,23 +71,7 @@
 
   </main>
 
-  <script src="/assets/vendor/jquery/jquery.min.js"></script>
-  <script src="/assets/vendor/jquery-ui/jquery-ui.min.js"></script>
-  <script src="/assets/vendor/blockui/jquery.blockUI.js"></script>
-  <script src="/assets/vendor/sweetalert/sweetalert2.all.min.js"></script>
-
-  <script src="/assets/vendor/popper/popper.js"></script>
-  <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/assets/vendor/select2/js/select2.full.min.js"></script>
-  <script src="/assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="/assets/vendor/listjs/listjs.min.js"></script>
-  <script src="/assets/vendor/moment/moment.min.js"></script>
-  <script src="/assets/vendor/daterangepicker/daterangepicker.js"></script>
-  <script src="/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-  <script src="/assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
-  <script src="/assets/js/atmos.min.js"></script>
-  <!--page specific scripts for demo-->
-  <script src="/assets/vendor/DataTables/datatables.min.js"></script>
+  {{ include('partials/footer.html') }}
 
   <script>
   $(document).on("click", ".register-user", function() {
@@ -112,13 +96,13 @@
         setTimeout(function(){
           window.location.href = ('/');
         }, 2000);
-    } else if (data.result == 'failed'){
-      Swal.fire({
-      type: 'error',
-      title: 'Error',
-      text: 'There was an error adding your listing. Please try again.'.data.db_error
-      });
-    }
+      } else if (data.result == 'failed'){
+        Swal.fire({
+        type: 'error',
+        title: 'Error',
+        text: 'There was an error adding your listing. Please try again.'
+        });
+      }
     })
     .fail(function(data) {
       Swal.fire({
