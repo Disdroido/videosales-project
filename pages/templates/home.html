@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Video Sales - Home page</title>
+	{{ include('partials/header.html') }}	
+</head>
+<body>
+<H1>Welcome to Video Sales</H1>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Login</button>
+
+
+
+<div class="modal fade show" data-keyboard="false" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" style="display: none;" aria-modal="true">
+    <div class="modal-dialog  modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content m-t-80">
+            <div class="modal-body">
+                <div class="">
+                    <div class="text-center p-b-20 pull-up-sm">
+                        <div class="avatar avatar-lg avatar-offline">
+                            <img src="assets/img/users/user-3.jpg" alt="..." class="avatar-img rounded-circle">
+                        </div>
+                    </div>
+                    <h3 class="text-center">Login </h3>
+                    <p class="text-center opacity-75">Please Login to continue </p>
+                    <form action="modal.html">
+                        <div class="form-group">
+
+                            <div class="input-group input-group-flush mb-3">
+                                <input type="text" id="email" class="form-control form-control-prepended" placeholder="Email">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class=" mdi mdi-account "></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group input-group-flush mb-3">
+                                <input type="password" id="password" class="form-control form-control-prepended">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class=" mdi mdi-key "></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <a href="#" data-dismiss="modal" class="btn text-uppercase btn-block btn-primary login-user">
+                                Login
+                            </a>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+  <script src="/assets/vendor/blockui/jquery.blockUI.js"></script>
+  <script src="/assets/vendor/sweetalert/sweetalert2.all.min.js"></script>
+
+  <script src="/assets/vendor/popper/popper.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/assets/vendor/select2/js/select2.full.min.js"></script>
+  <script src="/assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="/assets/vendor/listjs/listjs.min.js"></script>
+  <script src="/assets/vendor/moment/moment.min.js"></script>
+  <script src="/assets/vendor/daterangepicker/daterangepicker.js"></script>
+  <script src="/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script src="/assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+  <script src="/assets/js/atmos.min.js"></script>
+
+
+  <script>
+  $(document).on("click", ".login-user", function() {
+    var email = $("#email").val();
+    var password = $("#password").val();
+
+    $.post("api/users/login/user", {email:email, password:password}, function(){})
+    .done(function(data) {
+      if(data.result == 'true') {
+        setTimeout(function(){
+          window.location.href= ('/dashboard');
+        }, 1500);
+    } else if (data.result == 'failed'){
+      Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'Sorry incorrect login details!'
+      });
+    }
+    })
+    .fail(function(data) {
+        Swal.fire({
+        type: 'error',
+        title: 'Error',
+        text: 'There was an error contacting the server.'
+        });
+      setTimeout(function(){
+        location.reload();
+      }, 1500);
+    });
+  });
+  </script>
+
+
+</body>
+</html>

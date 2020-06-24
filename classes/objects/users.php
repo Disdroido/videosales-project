@@ -41,7 +41,39 @@ class Users {
   }
 
   public function loginUser(){
-    
+
+    $query = "SELECT * FROM ".$this->tableUsers." WHERE email = :email ORDER BY userId DESC LIMIT 1";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
+    $stmt->execute();
+    $count = $stmt->rowCount();
+
+    // if email account exists
+    if($count > 0) {
+        $user = $stmt->fetch();
+        if(password_verify($this->password, $user['password'])){
+
+            $_SESSION['user_id'] = $user['userId'];
+            $_SESSION['firstname'] = $user['firstname'];
+            $_SESSION['surname']= $user['surname'];
+            $_SESSION['role'] = $user['role'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['authenticated'] = "authenticated";
+
+            $result['result'] = "true";
+            $result['message'] = "Successfully logged in!";
+            return $result;
+        // if email doesn't exist show error
+        } else {
+            $result['result'] = "false";
+            return $result;
+        }
+    } else {
+      $error = $stmt->errorInfo();
+      $result['result'] = 'failed';
+      $result['db_errror'] = $error[2];
+      return $result;
+    }
   }
 
 }

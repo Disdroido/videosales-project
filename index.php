@@ -15,6 +15,10 @@ Flight::set('flight.handle_errors', false);
 
 // check if logged in and redirect to /dashboard or /login
 Flight::route('/', function(){
+	include "pages/home.php";
+});
+
+Flight::route('/dashboard', function(){
 	include "pages/dashboard.php";
 });
 
