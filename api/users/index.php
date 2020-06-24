@@ -27,6 +27,13 @@ Flight::route('/register/user', function(){
 	Flight::json($users->registerUser());
 });
 
+Flight::route('/login/user', functon(){
+  $users = new Users(Flight::get('db'));
+  $users->email = Flight::request()->data->email;
+  $users->password = Flight::request()->data->password;
+  Flight::json($users->loginUser());
+})
+
 Flight::start();
 
 ?>
