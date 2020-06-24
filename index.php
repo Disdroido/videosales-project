@@ -43,7 +43,7 @@ Flight::route('/register', function(){
 });
 
 Flight::route('/logout', function(){
-
+	include "pages/logout.php";
 });
 
 Flight::start();

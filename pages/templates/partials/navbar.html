@@ -1,0 +1,81 @@
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+          <li>
+            <a href="/"><img src="/assets/img/logo.png" alt="" style="height: 30px"></a>
+          </li>
+            <li class="nav-item">
+                <a class="nav-link" data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+          <li class="nav-item">
+              <a href="listings" class="nav-link">Listings</a>
+          </li>
+            <li class="nav-item">
+                <a href="" class="btn btn-success register" data-toggle="modal" data-target="#loginModal">Login</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(82px, 56px, 0px);">
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<div class="modal fade show" data-keyboard="false" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" style="display: none;" aria-modal="true">
+  <div class="modal-dialog  modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content m-t-80">
+      <div class="modal-body">
+        <div>
+          <div class="text-center p-b-20 pull-up-sm">
+            <div class="avatar avatar-lg">
+              <img src="assets/img/logo2.png" alt="..." class="avatar-img rounded-circle" style="background: #333;">
+            </div>
+          </div>
+          <h3 class="text-center">Login </h3>
+          <p class="text-center opacity-75">Please Login to continue </p>
+          <form>
+            <div class="form-group">
+              <div class="input-group input-group-flush mb-3">
+                <input type="text" id="email" class="form-control form-control-prepended" placeholder="Email">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <span class=" mdi mdi-account "></span>
+                  </div>
+                </div>
+              </div>
+              <div class="input-group input-group-flush mb-3">
+                <input type="password" id="password" class="form-control form-control-prepended" placeholder="Password">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <span class="mdi mdi-key "></span>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <a href="#" data-dismiss="modal" class="btn text-uppercase btn-block btn-success login-user">Login</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

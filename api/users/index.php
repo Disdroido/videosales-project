@@ -34,6 +34,12 @@ Flight::route('/login/user', function(){
   Flight::json($users->loginUser());
 });
 
+Flight::route('/logout/user', function(){
+  session_destroy();
+  session_unset();
+  Flight::json($users->logoutUser());
+})
+
 Flight::start();
 
 ?>
