@@ -1,43 +1,82 @@
-<header class="admin-header">
+<!-- <header class="admin-header">
+  <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
 
-    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+  <nav class=" mr-auto my-auto">
+    <ul class="nav align-items-center">
+      <li>
+        <a href="/"><img src="/assets/img/logo.png" alt="" style="height: 30px"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-target="#siteSearchModal" data-toggle="modal" href="#">
+          <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav class=" ml-auto">
+    <ul class="nav align-items-center">
+      <li class="nav-item">
+        <a href="listings" class="nav-link">Listings</a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="btn btn-success register" data-toggle="modal" data-target="#loginModal">Login</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="avatar avatar-sm avatar-online">
+            <span class="avatar-title rounded-circle bg-dark">V</span>
+          </div>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(82px, 56px, 0px);">
+          <a class="dropdown-item" href="dashboard"> Go To Dashboard</a>
+          <a class="dropdown-item" href="#">  Reset Password</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#"> Logout</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header> -->
 
-    <nav class=" mr-auto my-auto">
-        <ul class="nav align-items-center">
-          <li>
-            <a href="/"><img src="/assets/img/logo.png" alt="" style="height: 30px"></a>
-          </li>
-            <li class="nav-item">
-                <a class="nav-link" data-target="#siteSearchModal" data-toggle="modal" href="#">
-                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <nav class=" ml-auto">
-        <ul class="nav align-items-center">
-          <li class="nav-item">
-              <a href="listings" class="nav-link">Listings</a>
-          </li>
-            <li class="nav-item">
-                <a href="" class="btn btn-success register" data-toggle="modal" data-target="#loginModal">Login</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="avatar avatar-sm avatar-online">
-                        <span class="avatar-title rounded-circle bg-dark">V</span>
+<div class="header">
+  <nav class="background-trans navbar">
+    <input type="checkbox" id="nav" class="hidden">
+    <label for="nav" class="nav-btn">
+      <i></i>
+      <i></i>
+      <i></i>
+    </label>
+    <div class="logo mr-auto">
+      <a href="/" class="img-change"><img src="/assets/img/logo.png" alt="VideoSales"></a>
+    </div>
 
-                    </div>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(82px, 56px, 0px);">
-                    <a class="dropdown-item" href="#">  Reset Password</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"> Logout</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
-</header>
+    <div class="nav-wrapper">
+      <ul>
+        <li><a href="/" class="lg-hidden brand img-change"><img src="/assets/img/logo3.png" alt="VideoSales"></a></li>
+        <li><a class="link" href="listings">Listings</a></li>
+        {% if session.authenticated == true %}
+        <li class="dropdown ">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="avatar avatar-sm">
+              <span class="avatar-title rounded-circle bg-dark">E</span>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" style="width:200px;">
+            <p style="text-align: center;padding-top: 10px;color:#000">Hi, {{session.firstname|capitalize}}!</p>
+            <a href="dashboard" class="dropdown-item">Go To Dashboard</a>
+            <a class="dropdown-item" href="settings"> Settings</a>
+            <div class="dropdown-divider"></div>
+            <a id="logout" class="dropdown-item" href=""> Logout</a>
+          </div>
+        </li>
+        {% else %}
+        <li><a href='' class='btn btn-success pl-2 link' style='font-size: 13px;' data-toggle="modal" data-target="#loginModal">Start Selling <i class='mr-2 mdi mdi-video'></i></a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+</div>
+
 
 <div class="modal fade show" data-keyboard="false" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" style="display: none;" aria-modal="true">
   <div class="modal-dialog  modal-sm modal-dialog-centered" role="document">
@@ -80,3 +119,21 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function() {
+    //caches a jQuery object containing the header element
+    var header = $(".navbar");
+    $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 70) {
+            header.removeClass('background-trans').addClass("background-default");
+            $('.img-change img').attr('src', 'assets/img/logo.png');
+        } else {
+            header.removeClass("background-default").addClass('background-trans');
+            $('.img-change img').attr('src', '/assets/img/logo3.png');
+        }
+    });
+  });
+</script>

@@ -8,4 +8,6 @@ $loader = new \Twig\Loader\FilesystemLoader('pages/templates');
 $twig = new \Twig\Environment($loader, [
 ]);
 
+$twig->addGlobal('session', $_SESSION);
+
 echo $twig->render('home.html');
