@@ -8,4 +8,11 @@ $loader = new \Twig\Loader\FilesystemLoader('pages/templates');
 $twig = new \Twig\Environment($loader, [
 ]);
 
-echo $twig->render('register.html', ['page' => 'register']);
+$twig->addGlobal('session', $_SESSION);
+
+if(isset($_SESSION['authenticated'])){
+	header('Location: /');
+  die();
+} else {
+	echo $twig->render('register.html', ['page' => 'register']);
+}

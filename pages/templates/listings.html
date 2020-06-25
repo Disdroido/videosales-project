@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{ include('partials/header.html') }}
+
+<body>
+
+  <main>
+    {{ include('partials/navbar.html') }}
+    <section class="content">
+
+      <H1>All Listings</H1>
+
+      <div class="container-fluid">
+        <div class="row">
+
+          {% for listing in myListings %}
+          {% if listing.status == 1 %}
+          <div class="col-md-2 p-t-20">
+            <div class="card m-b-30">
+              <div class="card-media embed-responsive embed-responsive-16by9">
+                <iframe width="auto" height="auto" src="{{ listing.videoUrl }}" allow="encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="card-body scroll">
+                <h5 class="card-title text-capitalize">{{ listing.title }}</h5>
+                <p class="card-text text-capitalize"><span class="listing-title">Location</span><br /> {{ listing.suburb }}, {{ listing.state }}</p>
+                <p class="card-text text-capitalize">{{ listing.description|nl2br }}</p>
+              </div>
+
+              <div class="card-footer text-md-right">
+                <div class="row">
+                  <div class="col-6 text-left mb-0">
+                    <p class="mb-0"><span class="listing-title">Price</span><br /> ${{ listing.price }}</p>
+                  </div>
+                  <div class="col-6">
+                    <a href="#!" class="btn btn-success">Link</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  {{ include('partials/footer.html') }}
+
+  <script>
+  $(document).on("click", ".delete-listing", function() {
+    var id = $(this).attr('id');
+
+    $.post("api/listings/remove/listing", {id: id}, function(){})
+    .done(function(data) {
+      if(data.result == 'true') {
+        Swal.fire({
+        type: 'success',
+        title: 'Succces',
+        text: 'You have successfully removed this listing. Status: '+data.result
+        });
+        setTimeout(function(){
+          location.reload();
+        }, 1500);
+    } else if (data.result == 'failed'){
+      Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'There was an error deleting your listing. Please try again.'
+      //text: 'There was an error deleting your listing. Please try again.'.data.db_error
+      });
+    }
+    })
+    .fail(function(data) {
+        Swal.fire({
+        type: 'error',
+        title: 'Error',
+        text: 'There was an error contacting the server.'
+        });
+      setTimeout(function(){
+        location.reload();
+      }, 1500);
+    });
+  });
+  </script>
+
+</body>
+
+</html>

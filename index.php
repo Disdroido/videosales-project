@@ -18,6 +18,10 @@ Flight::route('/', function(){
 	include "pages/home.php";
 });
 
+Flight::route('/listings', function(){
+	include "pages/listings.php";
+});
+
 Flight::route('/dashboard', function(){
 	include "pages/dashboard.php";
 });

@@ -9,6 +9,16 @@ a:hover {
   cursor: pointer !important;
 }
 
+section.content {
+  margin: 20px 40px !important;
+}
+
+.scroll {
+  height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
 .sub-menu {
   background: #00BF99;
 }
@@ -229,6 +239,10 @@ a:hover {
   opacity: 0;
 }
 
+.sm-hidden {
+  display: inline-block !important;
+}
+
 .lg-hidden {
 	display: none !important;
 }
@@ -250,6 +264,7 @@ a:hover {
 	}
 
 	.brand img {
+    margin-top: 23px;
 		height: 25px;
 	}
 
@@ -376,39 +391,55 @@ a:hover {
 		margin-top: 4px;
 	}
 
-	/* menu close btn rotation */
+  /* menu close btn rotation */
 	#nav:checked + .nav-btn {
+    transition: transform .8s ease;
 		transform: rotate(45deg);
 	}
 
 	#nav:checked + .nav-btn i {
 		background-color: #fff !important;
-		transition: transform .2s ease;
+		transition: transform .8s ease;
 	}
 
-	#nav:checked + .nav-btn i:nth-child(1) {
-		transform: translateY(6px) rotate(180deg);
+  #nav:checked + .nav-btn i:nth-child(1) {
+    transition: all .8s ease;
+    transform: translateY(6px) scale(1);
+    width: 20px;
 	}
 
 	#nav:checked + .nav-btn i:nth-child(2) {
-		opacity: 0;
+    transition: opacity .8s ease;
+    opacity: 0;
 	}
 
 	#nav:checked + .nav-btn i:nth-child(3) {
-		transform: translateY(-6px) rotate(90deg);
+    transition: all .8s ease;
+		transform: translateY(-6px) scale(1) rotate(90deg);
+    width: 20px;
 	}
 
-	/* menu open btn rotation */
+  /* menu open btn rotation */
+  .nav-btn {
+    transition: transform .8s ease;
+		transform: rotate(0deg);
+  }
+
 	.nav-btn i:nth-child(1) {
-		transform: translateY(0px) rotate(0deg);
+    transition: all .8s ease;
+    transform: scale(1);
+    width: 12px;
 	}
 
 	.nav-btn i:nth-child(2) {
-		opacity: 1;
+    transition: opacity .8s ease;
+    opacity: 1;
 	}
 
 	.nav-btn i:nth-child(3) {
-		transform: translateY(0px) rotate(0deg);
+    transition: all .8s ease;
+		transform: scale(1);
+    width: 12px;
 	}
 
 	/* check box changes */
@@ -422,7 +453,7 @@ a:hover {
 		opacity: 0;
 	}
 
-	#nav:checked ~ .nav-wrapper ul li .link {
+	#nav:checked ~ .nav-wrapper ul li a {
 		opacity: 1;
 		transform: translateX(0);
 	}
@@ -432,8 +463,12 @@ a:hover {
 		opacity: 0;
 	}
 
+  .sm-hidden {
+    display: none !important;
+  }
+
 	.lg-hidden {
-		display: block;
+		display: block !important;
 	}
 }
 

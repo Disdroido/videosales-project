@@ -19,4 +19,9 @@ $cloudinaryUploudInputField = cl_upload_tag('video_id', array("resource_type" =>
   "eager_async" => true,
   "html" => array("id" => "my_upload_tag")));
 
-echo $twig->render('add-listing.html', ['addListing' => $listings->getAllListings(), 'cloudinaryUpload' => $cloudinaryUploudInputField, 'page' => 'addListing']);
+if(isset($_SESSION['authenticated'])){
+	echo $twig->render('add-listing.html', ['addListing' => $listings->getAllListings(), 'cloudinaryUpload' => $cloudinaryUploudInputField, 'page' => 'addListing']);
+} else {
+	header('Location: /');
+	die();
+}
