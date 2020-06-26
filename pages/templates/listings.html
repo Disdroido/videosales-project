@@ -49,43 +49,6 @@
 
   {{ include('partials/footer.html') }}
 
-  <script>
-  $(document).on("click", ".delete-listing", function() {
-    var id = $(this).attr('id');
-
-    $.post("api/listings/remove/listing", {id: id}, function(){})
-    .done(function(data) {
-      if(data.result == 'true') {
-        Swal.fire({
-        type: 'success',
-        title: 'Succces',
-        text: 'You have successfully removed this listing. Status: '+data.result
-        });
-        setTimeout(function(){
-          location.reload();
-        }, 1500);
-    } else if (data.result == 'failed'){
-      Swal.fire({
-      type: 'error',
-      title: 'Error',
-      text: 'There was an error deleting your listing. Please try again.'
-      //text: 'There was an error deleting your listing. Please try again.'.data.db_error
-      });
-    }
-    })
-    .fail(function(data) {
-        Swal.fire({
-        type: 'error',
-        title: 'Error',
-        text: 'There was an error contacting the server.'
-        });
-      setTimeout(function(){
-        location.reload();
-      }, 1500);
-    });
-  });
-  </script>
-
 </body>
 
 </html>

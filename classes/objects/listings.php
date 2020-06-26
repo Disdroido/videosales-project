@@ -20,6 +20,14 @@ class Listings {
 	}
 
 	public function getAllListings(){
+		$query = "SELECT * FROM ".$this->tableListing;
+		$stmt = $this->conn->prepare($query);
+		$stmt->execute() or die(print_r($stmt->errorInfo(), true));
+		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return $data;
+	}
+
+	public function getAllUserListings(){
 		$query = "SELECT * FROM ".$this->tableListing." WHERE userId = :userId";
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindValue(':userId', $this->userId, PDO::PARAM_INT);

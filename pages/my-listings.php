@@ -14,11 +14,10 @@ $twig->addGlobal('session', $_SESSION);
 $listings = new Listings(Flight::get('db'));
 $listings->userId = $_SESSION['user_id'];
 
-
-$twig->addExtension(new \Twig\Extension\DebugExtension());
+// $twig->addExtension(new \Twig\Extension\DebugExtension());
 
 if(isset($_SESSION['authenticated'])){
-	echo $twig->render('my-listings.html', ['myListings' => $listings->getAllListings(), 'page' => 'myListings']);
+	echo $twig->render('my-listings.html', ['myListings' => $listings->getAllUserListings(), 'page' => 'myListings']);
 } else {
 	header('Location: /');
 	die();

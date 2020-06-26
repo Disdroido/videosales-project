@@ -20,7 +20,7 @@
               <div class="row p-b-40">
                   <div class="col-12 p-t-40 p-b-40">
 
-                      <h1>Edit Listing {{ myListing.title}}</h1>
+                      <h1 class="h1-heading-icon text-white">Edit Listing {{ myListing.title}}</h1>
 
                   </div>
               </div>
@@ -34,7 +34,8 @@
               <div class="card m-b-30">
 
                 <div class="progress">
-                  <div class="progress-bar" id="progress_bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                  style="width:0%"><span class="upload-text-1" style="display:none">Uploading</span><span class="upload-text-2" style="display:none">Upload Complete!</span>
                   </div>
                 </div>
 
@@ -127,7 +128,7 @@
 
   <script>
   url = "{{myListing.videoUrl}}";
-  videoId = "{{myListing.publicId}}";    
+  videoId = "{{myListing.publicId}}";
   $(function() {
     if($.fn.cloudinary_fileupload !== undefined) {
       $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
@@ -136,17 +137,23 @@
 
   $.cloudinary.config({ cloud_name: 'videosales', api_key: '534325556641693' });
   $('.cloudinary-fileupload').bind('fileuploadprogress', function(e, data) {
+    $('.progress-bar').addClass("progress-bar-striped progress-bar-animated");
+    $('.upload-text-2').hide();
     $('#result').empty();
     $('.current-image').hide();
     $('#gallery').addClass('gallery-border');
     $("#progress_bar").css('width', 0+'%');
     $("#preview").show();
     $('.progress').show();
+    $('.upload-text-1').show();
     $('#progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');
   });
 
   $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {
     $('.preview');
+    $('.upload-text-1').hide();
+    $('.upload-text-2').show();
+    $('.progress-bar').removeClass("progress-bar-striped progress-bar-animated");
     videoId = (data.result.public_id);
     url = (data.result.secure_url);
     $('.preview').append('<h3>New Video Uploaded</h3><div class="embed-responsive embed-responsive-21by9"><iframe class="embed-responsive-item" src="'+url+'" allow="encrypted-media" allowfullscreen></iframe></div>');
@@ -175,7 +182,7 @@
       description: description,
       listingId: listingId,
       categoryId: categoryId,
-      videoUrl: videoUrl,      
+      videoUrl: videoUrl,
       publicId: publicId
     }, function(){})
     .done(function(data) {
