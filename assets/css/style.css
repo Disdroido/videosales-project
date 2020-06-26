@@ -61,7 +61,7 @@ section.content {
 }
 
 .progress-bar {
-  background-color: #00BF99 !important;
+  background-color: #606060 !important;
   border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
@@ -470,6 +470,41 @@ section.content {
 	.lg-hidden {
 		display: block !important;
 	}
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    transform: translateY(10%) !important;
+}
+
+.h1-heading-icon::before {
+    content: "";
+    width: 5px;
+    height: 35px;
+    margin-left: -10px;
+    margin-top: 6px;
+    background-color: #606060;
+    display: block;
+    position: absolute;
+}
+
+.h2-heading-icon::before {
+    content: "";
+    width: 5px;
+    height: 35px;
+    margin-left: -10px;
+    margin-top: 6px;
+    background-color: #606060;
+    display: block;
+    position: absolute;
+}
+
+.bg-darker {
+	background-color: #00bf99;
+	background-image: linear-gradient(30deg, #00bf99 20%, #333 100%);
+}
+
+.light-grey {
+	color: #606060;
 }
 
 @media screen and (min-width: 947px){

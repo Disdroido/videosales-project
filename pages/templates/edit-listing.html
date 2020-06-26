@@ -51,8 +51,9 @@
                     </div>
                   </div>
 
-                  <div class="row mb-5">
+                  <div class="row mb-5 p-t-20">
                     <div class="col-md-6">
+                      <h3>Current Video Listed</h3>
                       <div class="embed-responsive embed-responsive-21by9">
                         <iframe class="embed-responsive-item" src="{{ myListing.videoUrl }}" allow="encrypted-media" allowfullscreen></iframe>
                         <input id="publicId" type="text" name="publicId" class="form-control" value="{{ myListing.publicId }}" style="display:none">
@@ -90,7 +91,7 @@
                       </div>
                     </div>
 
-                    <div class="form-group col-md-12 px-0">
+                    <div class="form-group col-12 px-0">
                       <label for="category">Category</label>
                       <select id="category" class="form-control category-select">
                         <option value="1">Cars</option>
@@ -125,6 +126,8 @@
   {{ include('partials/footer.html') }}
 
   <script>
+  url = "{{myListing.videoUrl}}";
+  videoId = "{{myListing.publicId}}";    
   $(function() {
     if($.fn.cloudinary_fileupload !== undefined) {
       $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
@@ -146,7 +149,7 @@
     $('.preview');
     videoId = (data.result.public_id);
     url = (data.result.secure_url);
-    $('.preview').append('<div class="embed-responsive embed-responsive-21by9"><iframe class="embed-responsive-item" src="'+url+'" allow="encrypted-media" allowfullscreen></iframe></div>');
+    $('.preview').append('<h3>New Video Uploaded</h3><div class="embed-responsive embed-responsive-21by9"><iframe class="embed-responsive-item" src="'+url+'" allow="encrypted-media" allowfullscreen></iframe></div>');
     return true;
   });
   </script>
@@ -161,8 +164,8 @@
     var listingId = {{ myListing.listingId}};
     var categoryId = $("#category").val();
     var userId = {{session.user_id}};
-    // var publicId = videoId;
-    // var videoUrl = url;
+    var publicId = videoId;
+    var videoUrl = url;
 
     $.post("api/listings/edit/listing", {
       title: title,
@@ -171,9 +174,9 @@
       state: state,
       description: description,
       listingId: listingId,
-      categoryId: categoryId
-      // publicId: publicId
-      // videoUrl: videoUrl,
+      categoryId: categoryId,
+      videoUrl: videoUrl,      
+      publicId: publicId
     }, function(){})
     .done(function(data) {
       if(data.result == 'true') {
@@ -207,6 +210,7 @@
   });
 
   $(".category-select").select2();
+  $(".category-select").val("{{myListing.categoryId}}").trigger("change");
   </script>
 
 </body>

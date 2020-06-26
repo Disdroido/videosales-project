@@ -20,8 +20,9 @@ class Listings {
 	}
 
 	public function getAllListings(){
-		$query = "SELECT * FROM ".$this->tableListing;
+		$query = "SELECT * FROM ".$this->tableListing." WHERE userId = :userId";
 		$stmt = $this->conn->prepare($query);
+		$stmt->bindValue(':userId', $this->userId, PDO::PARAM_INT);
 		$stmt->execute() or die(print_r($stmt->errorInfo(), true));
 		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		return $data;
@@ -36,7 +37,7 @@ class Listings {
 
 		$data = $stmt->fetch(PDO::FETCH_ASSOC);
 		$data = array("listingId" => $data['listingId'], "title" => $data['title'], "price" => $data['price'], "suburb" => $data['suburb'],
-		"state" => $data['state'], "description" => $data['description'], "videoUrl" => $data['videoUrl']); //ready to dump on template
+		"state" => $data['state'], "description" => $data['description'], "videoUrl" => $data['videoUrl'], "publicId" => $data['publicId'], "categoryId" => $data['categoryId']); //ready to dump on template
 
 		if($count > 0) {
 			return $data;

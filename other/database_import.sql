@@ -50,7 +50,7 @@ CREATE TABLE `vs_listings` (
   `state` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `videoUrl` varchar(255) DEFAULT NULL,
-  `videoPublicId` varchar(255) DEFAULT NULL,
+  `publicId` varchar(255) DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '0',
   `categoryId` int(10) UNSIGNED NOT NULL,
   `userId` int(10) UNSIGNED NOT NULL,

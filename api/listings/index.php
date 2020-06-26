@@ -46,8 +46,8 @@ Flight::route('/edit/listing', function(){
   $listings->description = Flight::request()->data->description;
   $listings->listingId = Flight::request()->data->listingId;
   $listings->categoryId = Flight::request()->data->categoryId;
-  // $listings->videoUrl = Flight::request()->data->videoUrl;
-  // $listings->publicId = Flight::request()->data->publicId;
+  $listings->videoUrl = Flight::request()->data->videoUrl;
+  $listings->publicId = Flight::request()->data->publicId;
 	Flight::json($listings->editListing());
 });
 

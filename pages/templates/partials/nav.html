@@ -8,13 +8,12 @@
         <ul class="nav align-items-center">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-             style="text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 13px;">Profile</a>
+             style="text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 13px;"><i class="mdi mdi-account-circle"></i> Profile</a>
             <div class="dropdown-menu dropdown-menu-right" style="width:200px;">
-              <p style="text-align: center;padding-top: 10px;color:#000">Hi, {{session.firstname|capitalize}}!</p>
-              <a href="dashboard" class="dropdown-item">Go To Dashboard</a>
-              <a class="dropdown-item" href="settings"> Settings</a>
+              <p style="text-align: left;padding-top: 10px; padding-left: 22px; color:#000"><i class="mdi mdi-account-circle"></i> Hi, {{session.firstname|capitalize}}!</p>
+              <a href="dashboard" class="dropdown-item"><i class="mdi mdi-message-video"></i> Dashboard</a>
               <div class="dropdown-divider"></div>
-              <a id="logout" class="dropdown-item" href="Logout"> Logout</a>
+              <a id="logout" class="dropdown-item" href="Logout"><i class="mdi mdi-logout"></i> Logout</a>
             </div>
           </li>
         </ul>
