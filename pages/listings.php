@@ -14,9 +14,4 @@ $twig->addGlobal('session', $_SESSION);
 
 //$twig->addExtension(new \Twig\Extension\DebugExtension());
 
-if(isset($_SESSION['authenticated'])){
-	echo $twig->render('listings.html', ['myListings' => $listings->getAllListings(), 'page' => 'listings']);
-} else {
-	header('Location: /');
-	die();
-}
+echo $twig->render('listings.html', ['myListings' => $listings->getAllListings(), 'page' => 'listings']);

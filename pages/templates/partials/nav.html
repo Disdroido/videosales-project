@@ -6,21 +6,17 @@
     </nav>
     <nav class=" ml-auto">
         <ul class="nav align-items-center">
-            <li class="nav-item dropdown ">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="avatar avatar-sm avatar-online">
-                        <span class="avatar-title rounded-circle bg-dark">E</span>
-
-                    </div>
-                </a>
-                <div class="dropdown-menu  dropdown-menu-right" style="width:200px">
-                    <p style="text-align: center;padding-top: 10px;color:#000">Hi, {{session.firstname|capitalize}}!</p>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" data-toggle="modal" data-target="#passwordReset" href="#"> Change Password</a>
-                    <div class="dropdown-divider"></div>
-                    <a id="logout" class="dropdown-item" href=""> Logout</a>
-                </div>
-            </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+             style="text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 13px;">Profile</a>
+            <div class="dropdown-menu dropdown-menu-right" style="width:200px;">
+              <p style="text-align: center;padding-top: 10px;color:#000">Hi, {{session.firstname|capitalize}}!</p>
+              <a href="dashboard" class="dropdown-item">Go To Dashboard</a>
+              <a class="dropdown-item" href="settings"> Settings</a>
+              <div class="dropdown-divider"></div>
+              <a id="logout" class="dropdown-item" href="Logout"> Logout</a>
+            </div>
+          </li>
         </ul>
     </nav>
 </header>

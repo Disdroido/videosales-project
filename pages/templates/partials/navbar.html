@@ -11,17 +11,14 @@
     </div>
     {% if session.authenticated == true %}
     <li class="dropdown lg-hidden p-r-30">
-      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <div class="avatar avatar-sm">
-          <span class="avatar-title rounded-circle bg-dark">E</span>
-        </div>
-      </a>
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+       style="text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 13px;">Profile</a>
       <div class="dropdown-menu dropdown-menu-right" style="width:200px;">
         <p style="text-align: center;padding-top: 10px;color:#000">Hi, {{session.firstname|capitalize}}!</p>
         <a href="dashboard" class="dropdown-item">Go To Dashboard</a>
         <a class="dropdown-item" href="settings"> Settings</a>
         <div class="dropdown-divider"></div>
-        <a id="logout" class="dropdown-item" href=""> Logout</a>
+        <a id="logout" class="dropdown-item" href="logout"> Logout</a>
       </div>
     </li>
     {% else %}
@@ -34,21 +31,19 @@
         <li><a class="link" href="listings">Listings</a></li>
         {% if session.authenticated == true %}
         <li class="dropdown sm-hidden">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="avatar avatar-sm">
-              <span class="avatar-title rounded-circle bg-dark">E</span>
-            </div>
-          </a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+           style="text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 13px;">Profile</a>
           <div class="dropdown-menu dropdown-menu-right" style="width:200px;">
             <p style="text-align: center;padding-top: 10px;color:#000">Hi, {{session.firstname|capitalize}}!</p>
             <a href="dashboard" class="dropdown-item">Go To Dashboard</a>
             <a class="dropdown-item" href="settings"> Settings</a>
             <div class="dropdown-divider"></div>
-            <a id="logout" class="dropdown-item" href=""> Logout</a>
+            <a id="logout" class="dropdown-item" href="logout"> Logout</a>
           </div>
         </li>
         {% else %}
-        <li><a href='' class='btn btn-success pl-2 link' style='font-size: 13px;' data-toggle="modal" data-target="#loginModal">Start Selling <i class='mr-2 mdi mdi-video'></i></a></li>
+        <li><a href='' class='btn btn-lg btn-success pl-3 text-white' style='font-size: 13px; text-transform:uppercase;' data-toggle="modal" data-target="#loginModal">
+          Start Selling <i class='mdi mdi-video pl-1' style="font-size:15px"></i></a></li>
         {% endif %}
       </ul>
     </div>

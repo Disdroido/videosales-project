@@ -129,7 +129,7 @@ section.content {
 
 .logo {
 	float: left;
-  margin-top: -15px !important;
+  margin-top: -4px !important;
 }
 
 .logo img {
@@ -143,7 +143,7 @@ section.content {
 .navbar ul {
 	float: right;
 	position: relative;
-  margin-top: 0px;
+  margin-top: 7px;
 }
 
 .navbar ul li {

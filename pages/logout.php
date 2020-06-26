@@ -1,7 +1,7 @@
 <?php
 
-$loader = new \Twig\Loader\FilesystemLoader('pages/templates');
-$twig = new \Twig\Environment($loader, [
-]);
+session_destroy();
+header("Location: /");
+die();
 
-echo $twig->render('logout.html');
+?>

@@ -154,36 +154,35 @@
       videoUrl: videoUrl,
       publicId: publicId,
       categoryId: categoryId
-    })
-
+    }, function(){})
     .done(function(data) {
       if(data.result == 'true') {
         Swal.fire({
         type: 'success',
         title: 'Succces',
-        text: 'You Added A Listing '
+        text: 'You have successfully created a listing.'
         });
         setTimeout(function(){
-          window.location.href = '/';
-        }, 2000);
+          window.location.href = 'my-listings';
+        }, 1500);
     } else if (data.result == 'failed'){
       Swal.fire({
       type: 'error',
       title: 'Error',
-      // text: 'There was an error adding your listing. Please try again.'
-      text: 'There was an error adding your listing. Please try again.'.data.db_error
+      text: 'There was an error creating your listing. Please try again.'
+      //text: 'There was an error deleting your listing. Please try again.'.data.db_error
       });
     }
     })
     .fail(function(data) {
-      Swal.fire({
+        Swal.fire({
         type: 'error',
         title: 'Error',
         text: 'There was an error contacting the server.'
-      });
-      setTimeout(function() {
-
-      },2000);
+        });
+      setTimeout(function(){
+        location.reload();
+      }, 1500);
     });
   });
 
