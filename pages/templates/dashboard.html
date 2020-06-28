@@ -63,14 +63,7 @@
                   </div>
                 </div>
                 <div class="card-footer text-left">
-                  {% if listing.status == 0 %}
-                  <a href="/edit-listing" class="btn btn-warning">Edit</a>
-                  {% elseif listing.status == 1 %}
-                  <a href="/edit-listing" class="btn btn-warning">Edit</a>
-                  <a href="" id="{{listing.listingId}}" class="btn btn-danger delete-listing">Remove</a>
-                  {% elseif listing.status == 2 %}
-
-                  {% endif %}
+                  <a href="/my-listings" class="btn btn-primary">Go To Listing</a>
                 </div>
               </div>
 

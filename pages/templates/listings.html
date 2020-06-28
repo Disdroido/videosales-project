@@ -48,6 +48,37 @@
   </main>
 
   {{ include('partials/footer.html') }}
+  <script>
+  $(document).on("click", ".login-user", function() {
+    var email = $("#email").val();
+    var password = $("#password").val();
+
+    $.post("api/users/login/user", {email:email, password:password}, function(){})
+    .done(function(data) {
+      if(data.result == 'true') {
+        setTimeout(function(){
+          window.location.href= ('/dashboard');
+        }, 1500);
+    } else if (data.result == 'failed'){
+      Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'Sorry incorrect login details!'
+      });
+    }
+    })
+    .fail(function(data) {
+        Swal.fire({
+        type: 'error',
+        title: 'Error',
+        text: 'There was an error contacting the server.'
+        });
+      setTimeout(function(){
+        location.reload();
+      }, 1500);
+    });
+  });
+  </script>
 
 </body>
 

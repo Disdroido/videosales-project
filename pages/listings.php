@@ -2,16 +2,11 @@
 
 include_once('classes/objects/listings.php'); //load listing class
 
-$listings = new Listings(Flight::get('db'));
-
 $loader = new \Twig\Loader\FilesystemLoader('pages/templates');
 $twig = new \Twig\Environment($loader, [
-  //'debug' => true, //remove on live
-  //'cache' => __DIR__ .'/cache',
-  //'autoload' => true //clears the cache when template source code updated
 ]);
-$twig->addGlobal('session', $_SESSION);
 
-//$twig->addExtension(new \Twig\Extension\DebugExtension());
+$twig->addGlobal('session', $_SESSION);
+$listings = new Listings(Flight::get('db'));
 
 echo $twig->render('listings.html', ['myListings' => $listings->getAllListings(), 'page' => 'listings']);
