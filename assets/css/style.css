@@ -509,13 +509,18 @@ section.content {
 
 .bg-darker {
 	background-color: #00bf99;
+<<<<<<< HEAD
 	background-image: linear-gradient(30deg, #00bf99 20%, #eafff4 100%);
+=======
+	background-image: linear-gradient(30deg, #00bf99 20%, #d8fded 100%);
+>>>>>>> c832ae57697c705cf88db7e795634934fe1cde54
 }
 
 .light-grey {
 	color: #606060;
 }
 
+<<<<<<< HEAD
 .bg {
   position: absolute;
   top: 0;
@@ -553,6 +558,12 @@ section.content {
   width: max-content;
   max-width: 100%;
   box-sizing: border-box;
+=======
+.btn-grey {
+	border: #333 !important;
+	background-color: #333333 !important;
+	color: #fff !important;
+>>>>>>> c832ae57697c705cf88db7e795634934fe1cde54
 }
 
 @media screen and (min-width: 947px){
