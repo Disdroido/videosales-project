@@ -20,11 +20,20 @@ section.content {
 }
 
 .sub-menu {
-  background: cyan-100;
+  background: #606060 !important;
+}
+
+.admin-sidebar .menu .sub-menu .menu-item .menu-link {
+  background: #606060 !important;
 }
 
 .menu-item.active {
   background: #00BF99;
+}
+
+.menu-item:hover {
+  background: #00BF99;
+  transition: all .5s ease !important;
 }
 
 .menu-name {
@@ -147,7 +156,7 @@ section.content {
 .navbar ul {
 	float: right;
 	position: relative;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .navbar ul li {
@@ -500,11 +509,50 @@ section.content {
 
 .bg-darker {
 	background-color: #00bf99;
-	background-image: linear-gradient(30deg, #00bf99 20%, #333 100%);
+	background-image: linear-gradient(30deg, #00bf99 20%, #eafff4 100%);
 }
 
 .light-grey {
 	color: #606060;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: #333;
+}
+
+.bg .shower-text {
+  z-index: 1;
+  text-align: center;
+}
+
+.bg .svg {
+  width: 100%;
+  margin-top: 0 !important;
+  display: block;
+  z-index: 1;
+  position: relative;
+}
+
+.overlay {
+  padding: 30px 30px;
+}
+
+.overlay > :last-child {
+  margin-bottom: 0;
+}
+
+.uk-position-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 @media screen and (min-width: 947px){
