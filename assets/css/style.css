@@ -27,6 +27,10 @@ section.content {
   background: #00BF99;
 }
 
+.menu-name {
+  color: white;
+}
+
 .btn-success {
   border: #00BF99 !important;
   background-color: #00BF99 !important;
@@ -195,10 +199,6 @@ section.content {
 	padding: 5px 0;
 	opacity: 1;
 	transition: all .3s ease !important;
-}
-
-.active {
-  color: #720093;
 }
 
 .navbar ul li .link:hover {
