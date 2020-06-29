@@ -51,7 +51,7 @@
                   <tr>
                     <td>{{ listing.listingId }}</td>
                     <td class="text-capitalize">{{ listing.title }}</td>
-                    <td class="text-capitalize">{{ listing.description }}</td>
+                    <td class="text-capitalize">{{ listing.description|nl2br }}</td>
                     <td>${{ listing.price }}</td>
                     <td class="text-capitalize">{{ listing.suburb }}</td>
                     <td class="text-uppercase">{{ listing.state }}</td>

@@ -552,13 +552,12 @@ section.content {
   margin-bottom: 0;
 }
 
-.uk-position-center {
+.position-center {
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: max-content;
-  max-width: 100%;
-  box-sizing: border-box;
+}
 
 @media screen and (min-width: 947px){
   /* .dropdown-menu-right {
