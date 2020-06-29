@@ -500,11 +500,17 @@ section.content {
 
 .bg-darker {
 	background-color: #00bf99;
-	background-image: linear-gradient(30deg, #00bf99 20%, #333 100%);
+	background-image: linear-gradient(30deg, #00bf99 20%, #d8fded 100%);
 }
 
 .light-grey {
 	color: #606060;
+}
+
+.btn-grey {
+	border: #333 !important;
+	background-color: #333333 !important;
+	color: #fff !important;
 }
 
 @media screen and (min-width: 947px){
