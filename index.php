@@ -38,8 +38,8 @@ Flight::route('/edit-listing', function(){
 	include "pages/edit-listing.php";
 });
 
-Flight::route('/settings', function(){
-	include "pages/settings.php";
+Flight::route('/review', function(){
+	include "pages/review.php";
 });
 
 Flight::route('/register', function(){

@@ -87,52 +87,71 @@ class Listings {
 		}
 	}
 
-		public function deleteListing(){
-			$query = 'UPDATE '.$this->tableListing.' SET status = 2 WHERE listingId = :listingId';
-			$stmt = $this->conn->prepare($query);
+	public function editListing(){
+		$query = 'UPDATE '.$this->tableListing.' SET title = :title, price = :price, suburb = :suburb, state = :state,
+		description = :description, categoryId = :categoryId , updated = NOW() WHERE listingId = :listingId';
+		$stmt = $this->conn->prepare($query);
 
-			$stmt->bindValue(':listingId', $this->listingId, PDO::PARAM_INT);
-			$stmt->execute();
-			$count = $stmt->rowCount();
+		$stmt->bindValue(':title', $this->title,PDO::PARAM_STR);
+		$stmt->bindValue(':price', $this->price, PDO::PARAM_STR);
+		$stmt->bindValue(':suburb', $this->suburb, PDO::PARAM_STR);
+		$stmt->bindValue(':state', $this->state, PDO::PARAM_STR);
+		$stmt->bindValue(':description', $this->description, PDO::PARAM_STR);
+		$stmt->bindValue(':listingId', $this->listingId, PDO::PARAM_STR);
+		// $stmt->bindValue(':videoUrl', $this->videoUrl, PDO::PARAM_STR);
+		// $stmt->bindValue(':publicId', $this->publicId, PDO::PARAM_STR);
+		$stmt->bindValue(':categoryId', $this->categoryId, PDO::PARAM_INT);
 
-			if($count > 0) {
-				$result['result'] = "true";
-				return $result;
-			} else {
-				$error = $stmt->errorInfo();
-				$result['result'] = 'failed';
-				$result['db_error'] = $error; //not displaying errors on production site
-				return $result;
-			}
+		$stmt->execute();
+		$count = $stmt->rowCount();
+
+		if($count > 0) {
+			$result['result'] = "true";
+			return $result;
+		} else {
+			$error = $stmt->errorInfo();
+			$result['result'] = 'failed';
+			$result['db_error'] = $error; //not displaying errors on production site
+			return $result;
 		}
+	}
 
-		public function editListing(){
-			$query = 'UPDATE '.$this->tableListing.' SET title = :title, price = :price, suburb = :suburb, state = :state,
-			description = :description, categoryId = :categoryId , updated = NOW() WHERE listingId = :listingId';
-			$stmt = $this->conn->prepare($query);
+	public function deleteListing(){
+		$query = 'UPDATE '.$this->tableListing.' SET status = 2 WHERE listingId = :listingId';
+		$stmt = $this->conn->prepare($query);
 
-			$stmt->bindValue(':title', $this->title,PDO::PARAM_STR);
-			$stmt->bindValue(':price', $this->price, PDO::PARAM_STR);
-			$stmt->bindValue(':suburb', $this->suburb, PDO::PARAM_STR);
-			$stmt->bindValue(':state', $this->state, PDO::PARAM_STR);
-			$stmt->bindValue(':description', $this->description, PDO::PARAM_STR);
-			$stmt->bindValue(':listingId', $this->listingId, PDO::PARAM_STR);
-			// $stmt->bindValue(':videoUrl', $this->videoUrl, PDO::PARAM_STR);
-			// $stmt->bindValue(':publicId', $this->publicId, PDO::PARAM_STR);
-			$stmt->bindValue(':categoryId', $this->categoryId, PDO::PARAM_INT);
+		$stmt->bindValue(':listingId', $this->listingId, PDO::PARAM_INT);
+		$stmt->execute();
+		$count = $stmt->rowCount();
 
-			$stmt->execute();
-			$count = $stmt->rowCount();
-
-			if($count > 0) {
-				$result['result'] = "true";
-				return $result;
-			} else {
-				$error = $stmt->errorInfo();
-				$result['result'] = 'failed';
-				$result['db_error'] = $error; //not displaying errors on production site
-				return $result;
-			}
+		if($count > 0) {
+			$result['result'] = "true";
+			return $result;
+		} else {
+			$error = $stmt->errorInfo();
+			$result['result'] = 'failed';
+			$result['db_error'] = $error; //not displaying errors on production site
+			return $result;
 		}
+	}
+
+	public function reviewListing(){
+		$query = 'UPDATE '.$this->tableListing.' SET status = 1 WHERE listingId = :listingId';
+		$stmt = $this->conn->prepare($query);
+
+		$stmt->bindValue(':listingId', $this->listingId, PDO::PARAM_INT);
+		$stmt->execute();
+		$count = $stmt->rowCount();
+
+		if($count > 0) {
+			$result['result'] = "true";
+			return $result;
+		} else {
+			$error = $stmt->errorInfo();
+			$result['result'] = 'failed';
+			$result['db_error'] = $error; //not displaying errors on production site
+			return $result;
+		}
+	}
 
 }

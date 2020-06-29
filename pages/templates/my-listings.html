@@ -17,14 +17,14 @@
       <div class="bg-darker">
           <div class="container m-b-30">
               <div class="row p-b-40">
-                  <div class="col-9 p-t-40 p-b-40">
+                  <div class="col-md-9 p-t-40 p-b-40">
 
                     <h1 class="h1-heading-icon text-white">Your Listings</h1>
                     <p class="text-white">Welcome back, {{session.firstname|capitalize}}.</p>
 
                   </div>
 
-                  <div class="col-3 p-t-50 p-b-20 text-right">
+                  <div class="col-md-3 p-t-50 p-b-20 text-right">
 
                     <a href="add-listing" class="btn btn-success btn-lg sm-hidden">Add a New Listing</a>
                     <a href="add-listing" class="btn btn-success lg-hidden"><i class="mdi mdi-message-video" style="font-size:20px"></i> Add</a>
@@ -39,6 +39,7 @@
           <div class="row">
 
             {% for listing in myListings %}
+            {% if listing.status == 1 %}
             <div class="col-12">
 
               <div class="card m-b-30">
@@ -80,6 +81,7 @@
                 </div>
               </div>
             </div>
+            {% endif %}
             {% endfor %}
           </div>
         </div>

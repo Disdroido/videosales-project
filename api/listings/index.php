@@ -31,12 +31,6 @@ Flight::route('/add/listing', function(){
 	Flight::json($listings->addListing());
 });
 
-Flight::route('/remove/listing', function(){
-  $listings = new Listings(Flight::get('db'));
-  $listings->listingId = Flight::request()->data->id;
-  Flight::json($listings->deleteListing());
-});
-
 Flight::route('/edit/listing', function(){
   $listings = new Listings(Flight::get('db'));
   $listings->title = Flight::request()->data->title;
@@ -49,6 +43,18 @@ Flight::route('/edit/listing', function(){
   $listings->videoUrl = Flight::request()->data->videoUrl;
   $listings->publicId = Flight::request()->data->publicId;
 	Flight::json($listings->editListing());
+});
+
+Flight::route('/remove/listing', function(){
+  $listings = new Listings(Flight::get('db'));
+  $listings->listingId = Flight::request()->data->id;
+  Flight::json($listings->deleteListing());
+});
+
+Flight::route('/review/listing', function(){
+  $listings = new Listings(Flight::get('db'));
+  $listings->listingId = Flight::request()->data->id;
+  Flight::json($listings->reviewListing());
 });
 
 Flight::start();

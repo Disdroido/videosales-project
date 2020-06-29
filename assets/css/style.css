@@ -20,7 +20,7 @@ section.content {
 }
 
 .sub-menu {
-  background: #00BF99;
+  background: cyan-100;
 }
 
 .menu-item.active {
@@ -143,7 +143,7 @@ section.content {
 .navbar ul {
 	float: right;
 	position: relative;
-  margin-top: 7px;
+  margin-top: 10px;
 }
 
 .navbar ul li {
