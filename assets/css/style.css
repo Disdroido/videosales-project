@@ -522,6 +522,10 @@ section.content {
 	color: #fff !important;
 }
 
+.spacing {
+  margin-top: 100vh;
+}
+
 .bg {
   position: absolute;
   top: 0;
@@ -531,32 +535,8 @@ section.content {
   background: #333;
 }
 
-.bg .shower-text {
-  z-index: 1;
-  text-align: center;
-}
-
-.bg .svg {
+.bg svg {
   width: 100%;
-  margin-top: 0 !important;
-  display: block;
-  z-index: 1;
-  position: relative;
-}
-
-.overlay {
-  padding: 30px 30px;
-}
-
-.overlay > :last-child {
-  margin-bottom: 0;
-}
-
-.position-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 @media screen and (min-width: 947px){
