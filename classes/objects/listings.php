@@ -89,7 +89,7 @@ class Listings {
 
 	public function editListing(){
 		$query = 'UPDATE '.$this->tableListing.' SET title = :title, price = :price, suburb = :suburb, state = :state,
-		description = :description, categoryId = :categoryId , updated = NOW() WHERE listingId = :listingId';
+		description = :description, categoryId = :categoryId, videoUrl = :videoUrl, videoId = :videoId , updated = NOW() WHERE listingId = :listingId';
 		$stmt = $this->conn->prepare($query);
 
 		$stmt->bindValue(':title', $this->title,PDO::PARAM_STR);
@@ -98,8 +98,8 @@ class Listings {
 		$stmt->bindValue(':state', $this->state, PDO::PARAM_STR);
 		$stmt->bindValue(':description', $this->description, PDO::PARAM_STR);
 		$stmt->bindValue(':listingId', $this->listingId, PDO::PARAM_STR);
-		// $stmt->bindValue(':videoUrl', $this->videoUrl, PDO::PARAM_STR);
-		// $stmt->bindValue(':publicId', $this->publicId, PDO::PARAM_STR);
+		$stmt->bindValue(':videoUrl', $this->videoUrl, PDO::PARAM_STR);
+		$stmt->bindValue(':publicId', $this->publicId, PDO::PARAM_STR);
 		$stmt->bindValue(':categoryId', $this->categoryId, PDO::PARAM_INT);
 
 		$stmt->execute();

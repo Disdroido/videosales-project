@@ -7,7 +7,7 @@
       <i></i>
     </label>
     <div class="logo mr-auto">
-      <a href="/" class="img-change"><img src="/assets/img/logo.png" alt="VideoSales"></a>
+      <a href="/"><img src="/assets/img/logo.png" alt="VideoSales"></a>
     </div>
     {% if session.authenticated == true %}
     <li class="dropdown lg-hidden p-r-30">
@@ -26,7 +26,7 @@
 
     <div class="nav-wrapper">
       <ul>
-        <li><a href="/" class="lg-hidden brand img-change"><img src="/assets/img/logo3.png" alt="VideoSales"></a></li>
+        <li><a href="/" class="lg-hidden brand"><img src="/assets/img/logo3.png" alt="VideoSales"></a></li>
         <li><a class="link" href="listings">Listings</a></li>
         {% if session.authenticated == true %}
         <li class="dropdown sm-hidden">
@@ -90,21 +90,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(function() {
-    //caches a jQuery object containing the header element
-    var header = $(".navbar");
-    $(window).scroll(function() {
-        var scroll = $(window).scrollTop();
-
-        if (scroll >= 70) {
-            header.removeClass('background-trans').addClass("background-default");
-            $('.img-change img').attr('src', 'assets/img/logo.png');
-        } else {
-            header.removeClass("background-default").addClass('background-trans');
-            $('.img-change img').attr('src', '/assets/img/logo3.png');
-        }
-    });
-  });
-</script>

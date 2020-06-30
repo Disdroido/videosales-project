@@ -17,7 +17,7 @@
 	        <div class="bg-text card">
 						<div class="text-center card-body">
 		          <h2 class="text-capitalize" style="color: #fff;">want to sell you items online with a twist?<br /> Just read how to get started!</h2>
-		          <a href="" class="btn btn-success login-user" style="font-size: 20px;">Get Started</a>
+		          <a class="btn btn-success" id="scroll-btn" style="font-size: 20px;">Get Started</a>
 		        </div>
 	        </div>
 
@@ -43,7 +43,7 @@
 
       <section>
         <div class="container-fluid">
-					<div class="">
+					<div id="steps">
 	          <h1>Get Started</h1>
 	        </div>
 
@@ -63,36 +63,42 @@
 <body>
 
 {{ include('partials/footer.html') }}
-<script>
-$(document).on("click", ".login-user", function() {
-  var email = $("#email").val();
-  var password = $("#password").val();
 
-  $.post("api/users/login/user", {email:email, password:password}, function(){})
-  .done(function(data) {
-    if(data.result == 'true') {
-      setTimeout(function(){
-        window.location.href= ('/dashboard');
-      }, 1500);
-  } else if (data.result == 'failed'){
-    Swal.fire({
-    type: 'error',
-    title: 'Error',
-    text: 'Sorry incorrect login details!'
-    });
-  }
-  })
-  .fail(function(data) {
-      Swal.fire({
-      type: 'error',
-      title: 'Error',
-      text: 'There was an error contacting the server.'
-      });
-    setTimeout(function(){
-      location.reload();
-    }, 1500);
-  });
-});
+<script>
+	$(document).on("click", ".login-user", function() {
+	  var email = $("#email").val();
+	  var password = $("#password").val();
+
+	  $.post("api/users/login/user", {email:email, password:password}, function(){})
+	  .done(function(data) {
+	    if(data.result == 'true') {
+	      setTimeout(function(){
+	        window.location.href= ('/dashboard');
+	      }, 1500);
+	  } else if (data.result == 'failed'){
+	    Swal.fire({
+	    type: 'error',
+	    title: 'Error',
+	    text: 'Sorry incorrect login details!'
+	    });
+	  }
+	  })
+	  .fail(function(data) {
+	      Swal.fire({
+	      type: 'error',
+	      title: 'Error',
+	      text: 'There was an error contacting the server.'
+	      });
+	    setTimeout(function(){
+	      location.reload();
+	    }, 1500);
+	  });
+	});
+
+	$("#scroll-btn").click(function() {
+    $('html,body').animate({
+      scrollTop: $("#steps").offset().top}, 'slow');
+	});
 </script>
 
 </html>

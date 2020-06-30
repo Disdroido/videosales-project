@@ -7,7 +7,7 @@
 
   <main>
     {{ include('partials/navbar.html') }}
-    <section class="content">
+    <section class="content" style="margin-top: 100px !important;">
 
       <H1>All Listings</H1>
 
@@ -33,7 +33,7 @@
                     <p class="mb-0"><span class="listing-title">Price</span><br /> ${{ listing.price }}</p>
                   </div>
                   <div class="col-6">
-                    <a href="#!" class="btn btn-success">Link</a>
+                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#contactModal">Contact</a>
                   </div>
                 </div>
               </div>
@@ -44,6 +44,26 @@
         </div>
       </div>
     </section>
+
+    <div class="modal fade show" data-keyboard="false" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal" style="display: none;" aria-modal="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Would You Like To Contact This Person?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Please contact them using:</p>
+            <ul>
+              <li>Phone: 0414 314 148</li>
+              <li>Email: ethan.worth1@education.nsw.edu.au</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </main>
 
