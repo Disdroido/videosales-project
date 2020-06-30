@@ -5,6 +5,10 @@ body {
   color: #333 !important;
 }
 
+p {
+  color: #333;
+}
+
 a:hover {
   cursor: pointer !important;
 }
@@ -539,8 +543,48 @@ section.content {
   width: 100%;
 }
 
-@media screen and (min-width: 947px){
+.bg .bg-text {
+  position: absolute;
+  z-index: 1;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: 40%; /* Adjust this value to move the positioned div up and down */
+  background: rgba(96, 96, 96, 0.8);
+  color: #fff;
+  width: 40%; /* Set the width of the positioned div */
+  padding: 20px 10px;
+}
+
+.steps ol {
+  list-style: none;
+  padding-left: 20px;
+  counter-reset: listitem;
+}
+
+.steps ol li {
+  padding-left: 1.3em;
+  padding-bottom: 10px;
+}
+
+.steps ol li::before {
+  position: absolute;
+  left: 60px;
+  color: #00BF99;
+  counter-increment: listitem;
+  content: counters(listitem, '.') '.';
+  font-size: 20px;
+}
+
+@media screen and (max-width: 947px){
   /* .dropdown-menu-right {
     right:-35px !important;
   } */
+
+  .bg .bg-text {
+    top: 36%; /* Adjust this value to move the positioned div up and down */
+    color: #fff;
+    width: 90%; /* Set the width of the positioned div */
+  }
 }
