@@ -572,6 +572,15 @@ section.content {
   font-size: 17px;
 }
 
+.page-footer {
+  background-color: #333;
+}
+
+.page-footer img {
+  height: 30px;
+}
+
+
 @media screen and (max-width: 947px){
   /* .dropdown-menu-right {
     right:-35px !important;
