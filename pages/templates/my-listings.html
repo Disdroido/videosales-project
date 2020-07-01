@@ -52,11 +52,11 @@
                       <p><span class="listing-title">Location</span><br /> {{ listing.suburb|capitalize }}, {{ listing.state|upper }}</p>
                       <p><span class="listing-title">Status</span><br />
                         {% if listing.status == 0 %}
-                        Under review
+                        <i class="mdi mdi-clock" style="color:orange"></i> Under review
                         {% elseif listing.status == 1 %}
-                        Published
+                        <i class="mdi mdi-checkbox-marked-circle" style="color:green"></i> Published
                         {% elseif listing.status == 2 %}
-                        Sold!
+                        <i class="mdi mdi-tag" style="color:green"></i> Sold!
                         {% endif %}
 
                       </p>
@@ -84,10 +84,63 @@
             </div>
             {% endif %}
             {% endfor %}
-            {% if myListings|length > 0 %}
-            <h3 style="padding-top: 80px">You have not active listings.</h3>
-            {% endif %}
           </div>
+
+          {% if myListings|length == 0 %}
+          <h3 style="padding-top: 80px">You have no active listings.</h3>
+          {% endif %}
+
+          <div class="row">
+
+            {% for listing in myListings %}
+            {% if listing.status == 2%}
+            <h3>Listings That You Removed</h3>
+            <div class="col-12">
+
+              <div class="card m-b-30">
+                <div class="card-body">
+                  <div class="row flex-column-reverse flex-md-row">
+                    <div class="col-md-6">
+                      <h4 class="card-title text-capitalize m-b-0">{{ listing.title }}</h4><br>
+                      <p class="text-capitalize"><span class="listing-title">Description</span><br /> {{ listing.description|nl2br }}</p>
+                      <p><span class="listing-title">Price</span><br /> ${{ listing.price }}</p>
+                      <p><span class="listing-title">Location</span><br /> {{ listing.suburb|capitalize }}, {{ listing.state|upper }}</p>
+                      <p><span class="listing-title">Status</span><br />
+                        {% if listing.status == 0 %}
+                        <i class="mdi mdi-clock" style="color:orange"></i> Under review
+                        {% elseif listing.status == 1 %}
+                        <i class="mdi mdi-checkbox-marked-circle" style="color:green"></i> Published
+                        {% elseif listing.status == 2 %}
+                        <i class="mdi mdi-tag" style="color:green"></i> Sold!
+                        {% endif %}
+
+                      </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3 mb-md-0">
+                      <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="1280" height="720" src="{{ listing.videoUrl }}" allow="encrypted-media" allowfullscreen></iframe>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  {% if listing.status == 0 %}
+                  <a href="/edit-listing?id={{listing.listingId}}" class="btn btn-warning">Edit</a>
+                  {% elseif listing.status == 1 %}
+                  <a href="/edit-listing?id={{listing.listingId}}" class="btn btn-warning">Edit</a>
+                  <a href="#" id="{{listing.listingId}}" class="btn btn-danger delete-listing">Remove</a>
+                  <a href="#" id="{{listing.listingId}}" class="btn btn-success delete-listing float-right">Mark as Sold</a>
+                  {% elseif listing.status == 2 %}
+
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+
         </div>
       </div>
     </section>
