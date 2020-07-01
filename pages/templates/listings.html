@@ -67,39 +67,124 @@
 
   </main>
 
-  {{ include('partials/footer.html') }}
-  <script>
-  $(document).on("click", ".login-user", function() {
-    var email = $("#email").val();
-    var password = $("#password").val();
+  <!--Footer-->
+  <footer class="page-footer text-center text-md-left pt-4 text-white">
 
-    $.post("api/users/login/user", {email:email, password:password}, function(){})
-    .done(function(data) {
-      if(data.result == 'true') {
-        setTimeout(function(){
-          window.location.href= ('/dashboard');
-        }, 1500);
-    } else if (data.result == 'failed'){
+    <!--Footer Links-->
+    <div class="container-fluid">
+      <div class="row">
+
+        <!--First column-->
+        <div class="col-md-3">
+          <img src="/assets/img/logo3.png" alt="">
+          <!-- <a href="https://ethanworth.com.au"><img src="/assets/img/ethanworth.com.auLogo.png" alt=""></a> -->
+        </div>
+        <!--/.First column-->
+
+        <hr class="clearfix d-md-none" style="width:93%;margin:5 auto;">
+
+        <!--Second column-->
+        <div class="col-md-2 mx-auto">
+          <h5 class="text-uppercase font-weight-bold mb-4">Main Pages</h5>
+          <ul class="list-unstyled">
+            <li><a href="/">Home</a></li>
+            <li><a href="/listings">Listings</a></li>
+          </ul>
+        </div>
+        <!--/.Second column-->
+
+        <hr class="clearfix d-md-none" style="width:93%;margin:5 auto;">
+
+        <!--Third column-->
+        <div class="col-md-2 mx-auto">
+          <h5 class="text-uppercase font-weight-bold mb-4">Listing Manager Pages</h5>
+          <ul class="list-unstyled">
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/my-listings">My Listings</a></li>
+            <li><a href="/add-listing">Add Listing</a></li>
+            <li><a href="/edit-listing">Edit Listing</a></li>
+          </ul>
+        </div>
+        <!--/.Third column-->
+
+        <hr class="clearfix d-md-none" style="width:93%;margin:5 auto;">
+
+        <!--Fourth column-->
+        <div class="col-md-2 mx-auto">
+          <h5 class="text-uppercase font-weight-bold mb-4">Authentication Pages</h5>
+          <ul class="list-unstyled">
+            <li><a href="/">Login</a></li>
+            <li><a href="/register">Register</a></li>
+          </ul>
+        </div>
+        <!--/.Fourth column-->
+
+      </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <hr>
+
+    <!--Call to action-->
+    <div class="call-to-action text-center my-4">
+      <ul class="list-unstyled list-inline">
+        <li class="list-inline-item">
+          <h5>Register for free</h5>
+        </li>
+        <li class="list-inline-item"><a href="/register" class="btn btn-success">Register!</a></li>
+      </ul>
+    </div>
+    <!--/.Call to action-->
+
+    <!--Copyright-->
+    <!-- <div class="footer-copyright py-3 text-center">
+      <div class="container-fluid">
+        © 2020 Copyright. All Rights Reserved. <a href="https://ethanworth.com.au"> ethanworth.com.au </a>
+
+      </div>
+    </div> -->
+
+    <div class="container-fluid bg-darker align-self-center" style="min-height:200px">
+      <p class="text-center p-t-50 text-white">Video Sales 2020. All rights reserved.<br><br>Created by 431680505 @ Cecil Hills HS<br>HSC Major Project</p>
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->
+
+</body>
+
+{{ include('partials/footer.html') }}
+<script>
+$(document).on("click", ".login-user", function() {
+  var email = $("#email").val();
+  var password = $("#password").val();
+
+  $.post("api/users/login/user", {email:email, password:password}, function(){})
+  .done(function(data) {
+    if(data.result == 'true') {
+      setTimeout(function(){
+        window.location.href= ('/dashboard');
+      }, 1500);
+  } else if (data.result == 'failed'){
+    Swal.fire({
+    type: 'error',
+    title: 'Error',
+    text: 'Sorry incorrect login details!'
+    });
+  }
+  })
+  .fail(function(data) {
       Swal.fire({
       type: 'error',
       title: 'Error',
-      text: 'Sorry incorrect login details!'
+      text: 'There was an error contacting the server.'
       });
-    }
-    })
-    .fail(function(data) {
-        Swal.fire({
-        type: 'error',
-        title: 'Error',
-        text: 'There was an error contacting the server.'
-        });
-      setTimeout(function(){
-        location.reload();
-      }, 1500);
-    });
+    setTimeout(function(){
+      location.reload();
+    }, 1500);
   });
-  </script>
-
-</body>
+});
+</script>
 
 </html>
