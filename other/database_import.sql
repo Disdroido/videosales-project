@@ -62,7 +62,7 @@ CREATE TABLE `vs_listings` (
 -- Dumping data for table `vs_listings`
 --
 
-INSERT INTO `vs_listings` (`listingId`, `title`, `price`, `suburb`, `state`, `description`, `videoUrl`, `videoPublicId`, `status`, `categoryId`, `userId`, `created`, `updated`) VALUES
+INSERT INTO `vs_listings` (`listingId`, `title`, `price`, `suburb`, `state`, `description`, `videoUrl`, `publicId`, `status`, `categoryId`, `userId`, `created`, `updated`) VALUES
 (1, 'Ford Festiva For Sale', '5000.00', 'West Hoxton', 'NSW', '1996 Ford Festiva Trio.', 'https://res.cloudinary.com/demo/video/upload/dog.mp4', '12345', '0', '1', '1', '2020-06-01 09:00:00', NULL),
 (2, 'T-Shirt For Sale', '50.00', 'Cecil Hills', 'NSW', 'Premium Custom T-Shirt For Sale', 'https://res.cloudinary.com/demo/video/upload/dog.mp4', '6789', '0', '2', '2', '2020-06-01 09:01:00', NULL);
 

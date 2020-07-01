@@ -5,6 +5,10 @@ body {
   color: #333 !important;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Poppins', sans-serif !important;
+}
+
 p {
   color: #333;
 }
@@ -514,6 +518,10 @@ section.content {
 .bg-darker {
 	background-color: #00bf99;
 	background-image: linear-gradient(30deg, #00bf99 20%, #eafff4 100%);
+}
+
+.bg-green {
+	background-color: #00bf99;
 }
 
 .light-grey {
