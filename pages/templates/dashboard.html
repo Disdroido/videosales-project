@@ -32,24 +32,23 @@
           <div class="row">
 
             {% for listing in myListings %}
-            {% if listing.status == 1 %}
             <div class="col-12">
 
               <div class="card m-b-30">
                 <div class="card-body">
                   <div class="row flex-column-reverse flex-md-row">
                     <div class="col-md-6">
-                      <h5 class="card-title m-b-0 text-capitalize">{{ listing.title }}</h5>
+                      <h4 class="card-title m-b-0 text-capitalize">{{ listing.title }}</h4><br>
                       <p class="text-capitalize"><span class="listing-title">Description</span><br /> {{ listing.description|nl2br }}</p>
                       <p><span class="listing-title">Price</span><br /> ${{ listing.price }}</p>
                       <p class="text-capitalize"><span class="listing-title">Location</span><br /> {{ listing.suburb }}, {{ listing.state }}</p>
                       <p><span class="listing-title">Status</span><br />
                         {% if listing.status == 0 %}
-                        Under review
+                        <i class="mdi mdi-clock" style="color:orange"></i> Under review
                         {% elseif listing.status == 1 %}
-                        Published
+                        <i class="mdi mdi-checkbox-marked-circle" style="color:green"></i> Published
                         {% elseif listing.status == 2 %}
-                        Sold!
+                        <i class="mdi mdi-tag" style="color:green"></i> Sold!
                         {% endif %}
 
                       </p>
@@ -63,12 +62,11 @@
                   </div>
                 </div>
                 <div class="card-footer text-left">
-                  <a href="/my-listings" class="btn btn-success">Go To Listing</a>
+                  <a href="/my-listings" class="btn btn-success">Manage Listings</a>
                 </div>
               </div>
 
             </div>
-            {% endif %}
             {% endfor %}
 
           </div>
