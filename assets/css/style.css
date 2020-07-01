@@ -580,6 +580,16 @@ section.content {
   height: 30px;
 }
 
+.paage-footer a {
+  color: #FFF;
+  transition: all .4s ease !important;
+}
+
+.page-footer a:hover {
+  color: #00bf99;
+  transition: all .4s ease !important;
+}
+
 
 @media screen and (max-width: 947px){
   /* .dropdown-menu-right {
