@@ -3,6 +3,8 @@
 include_once('classes/objects/listings.php'); //load listing class
 include_once('classes/cloudinary_config.php'); //load cloudinary config
 
+$listings = new Listings(Flight::get('db'));
+
 if(isset($_GET['id'])){
   $listings->listingId = $_GET['id'];
 } else {
@@ -15,7 +17,6 @@ $twig = new \Twig\Environment($loader, [
 ]);
 
 $twig->addGlobal('session', $_SESSION);
-$listings = new Listings(Flight::get('db'));
 
 $cloudinaryUploudInputField = cl_upload_tag('video_id', array("resource_type" => "video",
   "eager" => array(array("streaming_profile" => "full_hd", "format" => "m3u8")),

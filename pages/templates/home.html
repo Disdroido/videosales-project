@@ -7,54 +7,96 @@
 
 	<main>
 		{{ include('partials/navbar.html') }}
+
+		<div class="spacing">
+			<div class="bg">
+				<div class="bg-text">
+					<div class="text-center">
+						<p class="text-capitalize text-white">sell it on</p>
+						<p class="text-capitalize text-white">video sales</p>
+						<a id="scroll-btn" style="font-size: 20px; color: #333;">Get started for free <i class="mdi mdi-arrow-down-drop-circle"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<section class="content">
-
-			<div class="spacing">
-	      <div class="bg">
-
-	        {{ include('partials/bg1.svg') }}
-
-	        <div class="bg-text card">
-						<div class="text-center card-body">
-		          <h2 class="text-capitalize" style="color: #fff;">want to sell you items online with a twist?<br /> Just read how to get started!</h2>
-		          <a class="btn btn-success" id="scroll-btn" style="font-size: 20px;">Get Started</a>
-		        </div>
-	        </div>
-
-	      </div>
-	    </div>
-
-
-      <section class="mb-5">
-        <div class="row">
-          <div class="col-md-4 col-sm-12">
-            <div class="card">
-              <div class="">
-                  <img src="images/light.jpg" alt="">
-              </div>
-              <div class="card-body">
-                  <h3 class="card-title">Media Top</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-              </div>
-          </div>
-          </div>
-        </div>
-      </section>
-
       <section>
-        <div class="container-fluid">
+        <div class="container">
 					<div id="steps">
-	          <h1>Get Started</h1>
+	          <h1 class="text-center">Get Started</h1>
 	        </div>
 
 					<div class="steps">
+						<div class="row">
+							<div class="col-md-8 text-center">
+								<h2>1. Login</h2>
+								<p>Login or Register to our website by pressing the "Start Selling" button!</p>
+							</div>
+							<div class="col-md-4">
+								<img src="/assets/img/steps/step1.png" alt="Step 1">
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4">
+								<img src="/assets/img/steps/step2.png" alt="Step 2">
+							</div>
+							<div class="col-md-8 text-center">
+								<h2>2. Dashboard!</h2>
+								<p>Once logged in, go to "Dashboard" which is in the profile dropdown button.</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-8 text-center">
+								<h2>3. Add Listing!</h2>
+								<p>Once at the Dashboard page, click the "Listings" dropdown and then the "Add Listing" link.</p>
+							</div>
+							<div class="col-md-4">
+								<img src="/assets/img/steps/step3.png" alt="Step 3">
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4">
+								<img src="/assets/img/steps/step4.png" alt="Step 4">
+							</div>
+							<div class="col-md-8 text-center">
+								<h2>4. Filling out the form</h2>
+								<p>Fill in all the fields and add a video of your item!</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-8 text-center">
+								<h2>5. All you do now is wait!</h2>
+								<p>Once you have created your listing, all you have to do is wait untill someone wants to buy you item!</p>
+							</div>
+							<div class="col-md-4">
+								<img src="/assets/img/steps/step5.png" alt="Step 5">
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4">
+								<img src="/assets/img/steps/step6.png" alt="Step 6">
+							</div>
+							<div class="col-md-8 text-center">
+								<h2>6. Complete</h2>
+								<p>IT IS THAT EASY!</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- <div class="steps">
 						<ol>
 							<li>Sign up to our website by pressing the "Start Selling" button!</li>
 							<li>Once logged in, go to your profile and press the "Start Selling" button and create a listing to sell and item!</li>
 							<li>Once you have created your listing, all you have to do is wait untill someone wants to buy you item!</li>
 							<li>IT IS THAT EASY!</li>
 						</ol>
-					</div>
+					</div> -->
         </div>
       </section>
 		</section>
