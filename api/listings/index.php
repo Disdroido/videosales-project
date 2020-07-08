@@ -28,6 +28,7 @@ Flight::route('/add/listing', function(){
   $listings->videoUrl = Flight::request()->data->videoUrl;
   $listings->publicId = Flight::request()->data->publicId;
   $listings->categoryId = Flight::request()->data->categoryId;
+  $listings->userId = Flight::request()->data->userId;
 	Flight::json($listings->addListing());
 });
 

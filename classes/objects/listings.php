@@ -57,8 +57,6 @@ class Listings {
 	}
 
 	public function addListing(){
-		$this->userId = 1; //testing
-
 		$query = 'INSERT INTO '.$this->tableListing.' (title, price, suburb, state, description, videoUrl, publicId, categoryId, userId)
 		VALUES (:title, :price, :suburb, :state, :description, :videoUrl, :publicId, :categoryId, :userId)';
 		$stmt = $this->conn->prepare($query);
